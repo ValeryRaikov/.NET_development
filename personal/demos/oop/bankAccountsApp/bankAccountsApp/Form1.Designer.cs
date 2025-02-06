@@ -37,8 +37,11 @@ namespace bankAccountsApp
             this.DepositBtn = new System.Windows.Forms.Button();
             this.WithdrwaBtn = new System.Windows.Forms.Button();
             this.CreateAccountBtn = new System.Windows.Forms.Button();
+            this.InterestRateLbl = new System.Windows.Forms.Label();
+            this.InterestRateNum = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.AmountNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BankAccountsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InterestRateNum)).BeginInit();
             this.SuspendLayout();
             // 
             // OwnerLbl
@@ -116,7 +119,7 @@ namespace bankAccountsApp
             // CreateAccountBtn
             // 
             this.CreateAccountBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CreateAccountBtn.Location = new System.Drawing.Point(134, 90);
+            this.CreateAccountBtn.Location = new System.Drawing.Point(134, 155);
             this.CreateAccountBtn.Name = "CreateAccountBtn";
             this.CreateAccountBtn.Size = new System.Drawing.Size(205, 48);
             this.CreateAccountBtn.TabIndex = 7;
@@ -124,11 +127,30 @@ namespace bankAccountsApp
             this.CreateAccountBtn.UseVisualStyleBackColor = true;
             this.CreateAccountBtn.Click += new System.EventHandler(this.CreateAccountBtn_Click);
             // 
+            // InterestRateLbl
+            // 
+            this.InterestRateLbl.AutoSize = true;
+            this.InterestRateLbl.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.InterestRateLbl.Location = new System.Drawing.Point(37, 105);
+            this.InterestRateLbl.Name = "InterestRateLbl";
+            this.InterestRateLbl.Size = new System.Drawing.Size(162, 31);
+            this.InterestRateLbl.TabIndex = 8;
+            this.InterestRateLbl.Text = "InterestRate %";
+            // 
+            // InterestRateNum
+            // 
+            this.InterestRateNum.Location = new System.Drawing.Point(216, 105);
+            this.InterestRateNum.Name = "InterestRateNum";
+            this.InterestRateNum.Size = new System.Drawing.Size(123, 27);
+            this.InterestRateNum.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 358);
+            this.Controls.Add(this.InterestRateNum);
+            this.Controls.Add(this.InterestRateLbl);
             this.Controls.Add(this.CreateAccountBtn);
             this.Controls.Add(this.WithdrwaBtn);
             this.Controls.Add(this.DepositBtn);
@@ -141,6 +163,7 @@ namespace bankAccountsApp
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.AmountNum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BankAccountsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InterestRateNum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,6 +179,8 @@ namespace bankAccountsApp
         private System.Windows.Forms.Button DepositBtn;
         private System.Windows.Forms.Button WithdrwaBtn;
         private System.Windows.Forms.Button CreateAccountBtn;
+        private System.Windows.Forms.Label InterestRateLbl;
+        private System.Windows.Forms.NumericUpDown InterestRateNum;
     }
 }
 

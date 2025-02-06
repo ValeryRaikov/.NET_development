@@ -115,6 +115,7 @@ namespace bankAccountsApp
             this.CreateAccountBtn.TabIndex = 7;
             this.CreateAccountBtn.Text = "Create Account";
             this.CreateAccountBtn.UseVisualStyleBackColor = true;
+            this.CreateAccountBtn.Click += new System.EventHandler(this.CreateAccountBtn_Click);
             // 
             // Form1
             // 

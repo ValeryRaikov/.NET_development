@@ -14,5 +14,18 @@ namespace bankAccountsApp
         {
             InterestRate = interestRate;
         }
+
+        public override String Deposit(decimal amount)
+        {
+            if (amount <= 0)
+                return $"Amount cannot be negative number: #{amount}!";
+            if (amount > 20000)
+                return "AML Deposit limit reached!";
+
+            decimal interestAmount = (InterestRate / 100) * amount;
+            Balance += amount + interestAmount;
+
+            return "Deposit completed successfully!";
+        }
     }
 }

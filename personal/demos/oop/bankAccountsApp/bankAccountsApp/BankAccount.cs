@@ -8,9 +8,9 @@ namespace bankAccountsApp
 {
     public class BankAccount
     {
-        public String Owner { get; private set; }
-        public Guid AccountNumber { get; private set; }
-        public decimal Balance { get; private set; }
+        public String Owner { get; protected set; }
+        public Guid AccountNumber { get; protected set; }
+        public decimal Balance { get; protected set; }
 
         public BankAccount(String owner)
         {
@@ -19,7 +19,7 @@ namespace bankAccountsApp
             Balance = 0;
         }
 
-        public String Deposit(decimal amount)
+        public virtual String Deposit(decimal amount)
         {
             if (amount <= 0)
                 return $"Amount cannot be negative number: #{amount}!";

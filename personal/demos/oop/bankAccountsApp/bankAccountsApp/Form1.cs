@@ -36,5 +36,35 @@ namespace bankAccountsApp
             BankAccountsGrid.DataSource = null;
             BankAccountsGrid.DataSource = BankAccounts;
         }
+
+        private void DepositBtn_Click(object sender, EventArgs e)
+        {
+            if (BankAccountsGrid.SelectedRows.Count == 1)
+            {
+                BankAccount selectedBankAccount = BankAccountsGrid.SelectedRows[0].DataBoundItem as BankAccount;
+
+                String message = selectedBankAccount.Deposit(AmountNum.Value);
+
+                RefreshGrid();
+
+                AmountNum.Value = 0;
+                MessageBox.Show(message);
+            }
+        }
+
+        private void WithdrwaBtn_Click(object sender, EventArgs e)
+        {
+            if (BankAccountsGrid.SelectedRows.Count == 1)
+            {
+                BankAccount selectedBankAccount = BankAccountsGrid.SelectedRows[0].DataBoundItem as BankAccount;
+
+                String message = selectedBankAccount.Withdraw(AmountNum.Value);
+
+                RefreshGrid();
+
+                AmountNum.Value = 0;
+                MessageBox.Show(message);
+            }
+        }
     }
 }

@@ -8,15 +8,41 @@ namespace bankAccountsApp
 {
     public class BankAccount
     {
-        public String Owner { get; set; }
-        public Guid AccountNumber { get; set; }
-        public decimal Balance { get; set; }
+        public String Owner { get; private set; }
+        public Guid AccountNumber { get; private set; }
+        public decimal Balance { get; private set; }
 
         public BankAccount(String owner)
         {
             Owner = owner;
             AccountNumber = Guid.NewGuid();
             Balance = 0;
+        }
+
+        public String Deposit(decimal amount)
+        {
+            if (amount <= 0)
+                return $"Amount cannot be negative number: #{amount}!";
+            if (amount > 20000)
+                return "AML Deposit limit reached!";
+
+            Balance += amount;
+
+            return "Deposit completed successfully!";
+        }
+
+        public String Withdraw(decimal amount)
+        {
+            if (amount <= 0)
+                return $"Amount cannot be negative number: #{amount}!";
+            if (amount > 20000)
+                return "AML Withdraw limit reached!";
+            if (amount > Balance)
+                return "Insufficient User balance!";
+
+            Balance -= amount;
+
+            return "Withdraw completed successfully!";
         }
     }
 }

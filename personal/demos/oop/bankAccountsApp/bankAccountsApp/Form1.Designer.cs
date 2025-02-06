@@ -71,6 +71,11 @@ namespace bankAccountsApp
             // AmountNum
             // 
             this.AmountNum.Location = new System.Drawing.Point(134, 263);
+            this.AmountNum.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.AmountNum.Name = "AmountNum";
             this.AmountNum.Size = new System.Drawing.Size(150, 27);
             this.AmountNum.TabIndex = 3;
@@ -95,6 +100,7 @@ namespace bankAccountsApp
             this.DepositBtn.TabIndex = 5;
             this.DepositBtn.Text = "Deposit";
             this.DepositBtn.UseVisualStyleBackColor = true;
+            this.DepositBtn.Click += new System.EventHandler(this.DepositBtn_Click);
             // 
             // WithdrwaBtn
             // 
@@ -105,6 +111,7 @@ namespace bankAccountsApp
             this.WithdrwaBtn.TabIndex = 6;
             this.WithdrwaBtn.Text = "Withdraw";
             this.WithdrwaBtn.UseVisualStyleBackColor = true;
+            this.WithdrwaBtn.Click += new System.EventHandler(this.WithdrwaBtn_Click);
             // 
             // CreateAccountBtn
             // 

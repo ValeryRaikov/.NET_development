@@ -8,8 +8,8 @@ namespace CarStoreApp
 {
     public abstract class Store
     {
-        public static int VehiclesCount { get; set; }
-        public static int InsurancesCount { get; set; }
+        public static int VehiclesCount { get; set; } = 0;
+        public static int InsurancesCount { get; set; } = 0;
 
         public string Name { get; set; }
         public List<Vehicle> Vehicles { get; set; }

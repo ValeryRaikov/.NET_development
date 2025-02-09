@@ -37,6 +37,42 @@ namespace CarStoreApp
             }
         }
 
+        public void AddVehicle(Vehicle vehicle)
+        {
+            if (Vehicles.Contains(vehicle))
+            {
+                Console.WriteLine("This vehicle is already registered!");
+                return;
+            }
+
+            Vehicles.Add(vehicle);
+            Console.WriteLine($"{vehicle} registered successfully!");
+        }
+
+        public void RemoveVehicle(Vehicle vehicle)
+        {
+            if (!Vehicles.Contains(vehicle))
+            {
+                Console.WriteLine("This vehicle is not yet registered!");
+                return;
+            }
+
+            Vehicles.Remove(vehicle);
+            Console.WriteLine($"{vehicle} removed successfully!");
+        }
+
+        public decimal CalculateBudget()
+        {
+            decimal total = 0;
+
+            foreach(Vehicle vehicle in Vehicles)
+            {
+                total += vehicle.Price * VehicleRate;
+            }
+
+            return total;
+        }
+
         public override string ToString()
         {
             return $"Insurance -> {Name}";

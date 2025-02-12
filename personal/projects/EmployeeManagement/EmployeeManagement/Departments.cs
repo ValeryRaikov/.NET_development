@@ -18,16 +18,10 @@ namespace EmployeeManagement
         {
             InitializeComponent();
             Con = new Functions();
-            ListenerDepartments();
             ShowDepartments();
         }
 
         private void ShowDepartments()
-        {
-
-        }
-
-        private void ListenerDepartments()
         {
             string Query = "SELECT * FROM DepartmentTbl";
             DepList.DataSource = Con.GetData(Query);
@@ -56,6 +50,77 @@ namespace EmployeeManagement
             {
                 MessageBox.Show(Ex.Message);
             }
+        }
+
+        int key = 0;
+        private void DepList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DepNameTb.Text = DepList.SelectedItem.ToString();
+            if (DepNameTb.Text == "")
+            {
+                key = 0;
+            }
+            else
+            {
+                key = Convert.ToInt32(DepList.SelectedIndex.ToString());
+            }
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DepNameTb.Text == "")
+                {
+                    MessageBox.Show("Missing Data!");
+                }
+                else
+                {
+                    string Dep = DepNameTb.Text;
+                    string Query = "UPDATE DepartmentTbl SET DepName = '{0}' WHERE DepId = {1}";
+                    Query = string.Format(Query, DepNameTb.Text, key);
+                    Con.setData(Query);
+                    ShowDepartments();
+                    MessageBox.Show("Department Updated!");
+                    DepNameTb.Text = "";
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DepNameTb.Text == "")
+                {
+                    MessageBox.Show("Missing Data!");
+                }
+                else
+                {
+                    string Dep = DepNameTb.Text;
+                    string Query = "DELETE FROM DepartmentTbl WHERE DepId = {0}";
+                    Query = string.Format(Query, key);
+                    Con.setData(Query);
+                    ShowDepartments();
+                    MessageBox.Show("Department Deleted!");
+                    DepNameTb.Text = "";
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+
+        private void EmpLbl_Click(object sender, EventArgs e)
+        {
+            Employees EmpObj = new Employees();
+            EmpObj.Show();
+            this.Hide();
         }
     }
 }

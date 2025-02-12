@@ -34,20 +34,20 @@ namespace EmployeeManagement
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.EmpNameTb = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.SalaryTb = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.EmpGenderCb = new System.Windows.Forms.ComboBox();
+            this.EmpDepCb = new System.Windows.Forms.ComboBox();
+            this.DOBTb = new System.Windows.Forms.DateTimePicker();
+            this.JDateTb = new System.Windows.Forms.DateTimePicker();
+            this.AddBtn = new System.Windows.Forms.Button();
+            this.UpdateBtn = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -55,6 +55,8 @@ namespace EmployeeManagement
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.EmpList = new System.Windows.Forms.ListBox();
+            this.DeleteBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -104,13 +106,13 @@ namespace EmployeeManagement
             this.label3.TabIndex = 6;
             this.label3.Text = "Employee Name";
             // 
-            // textBox1
+            // EmpNameTb
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(43, 209);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(405, 34);
-            this.textBox1.TabIndex = 5;
+            this.EmpNameTb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.EmpNameTb.Location = new System.Drawing.Point(43, 209);
+            this.EmpNameTb.Name = "EmpNameTb";
+            this.EmpNameTb.Size = new System.Drawing.Size(405, 34);
+            this.EmpNameTb.TabIndex = 5;
             // 
             // label4
             // 
@@ -167,13 +169,13 @@ namespace EmployeeManagement
             this.label8.TabIndex = 16;
             this.label8.Text = "Employee Daily Salary";
             // 
-            // textBox6
+            // SalaryTb
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox6.Location = new System.Drawing.Point(43, 640);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(405, 34);
-            this.textBox6.TabIndex = 15;
+            this.SalaryTb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SalaryTb.Location = new System.Drawing.Point(43, 640);
+            this.SalaryTb.Name = "SalaryTb";
+            this.SalaryTb.Size = new System.Drawing.Size(405, 34);
+            this.SalaryTb.TabIndex = 15;
             // 
             // panel2
             // 
@@ -184,68 +186,72 @@ namespace EmployeeManagement
             this.panel2.Size = new System.Drawing.Size(1251, 59);
             this.panel2.TabIndex = 17;
             // 
-            // comboBox1
+            // EmpGenderCb
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.EmpGenderCb.FormattingEnabled = true;
+            this.EmpGenderCb.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.comboBox1.Location = new System.Drawing.Point(43, 289);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(405, 36);
-            this.comboBox1.TabIndex = 18;
+            this.EmpGenderCb.Location = new System.Drawing.Point(43, 289);
+            this.EmpGenderCb.Name = "EmpGenderCb";
+            this.EmpGenderCb.Size = new System.Drawing.Size(405, 36);
+            this.EmpGenderCb.TabIndex = 18;
             // 
-            // comboBox2
+            // EmpDepCb
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.EmpDepCb.FormattingEnabled = true;
+            this.EmpDepCb.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.comboBox2.Location = new System.Drawing.Point(43, 377);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(405, 36);
-            this.comboBox2.TabIndex = 19;
+            this.EmpDepCb.Location = new System.Drawing.Point(43, 377);
+            this.EmpDepCb.Name = "EmpDepCb";
+            this.EmpDepCb.Size = new System.Drawing.Size(405, 36);
+            this.EmpDepCb.TabIndex = 19;
             // 
-            // dateTimePicker1
+            // DOBTb
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(43, 464);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(405, 34);
-            this.dateTimePicker1.TabIndex = 20;
+            this.DOBTb.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DOBTb.Location = new System.Drawing.Point(43, 464);
+            this.DOBTb.Name = "DOBTb";
+            this.DOBTb.Size = new System.Drawing.Size(405, 34);
+            this.DOBTb.TabIndex = 20;
             // 
-            // dateTimePicker2
+            // JDateTb
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(43, 552);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(405, 34);
-            this.dateTimePicker2.TabIndex = 21;
+            this.JDateTb.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.JDateTb.Location = new System.Drawing.Point(43, 552);
+            this.JDateTb.Name = "JDateTb";
+            this.JDateTb.Size = new System.Drawing.Size(405, 34);
+            this.JDateTb.TabIndex = 21;
             // 
-            // button1
+            // AddBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.Teal;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(43, 700);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 49);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "ADD";
-            this.button1.UseVisualStyleBackColor = false;
+            this.AddBtn.BackColor = System.Drawing.Color.Teal;
+            this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AddBtn.ForeColor = System.Drawing.Color.White;
+            this.AddBtn.Location = new System.Drawing.Point(43, 700);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(161, 49);
+            this.AddBtn.TabIndex = 22;
+            this.AddBtn.Text = "ADD";
+            this.AddBtn.UseVisualStyleBackColor = false;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
-            // button2
+            // UpdateBtn
             // 
-            this.button2.BackColor = System.Drawing.Color.Teal;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(287, 700);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(161, 49);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "UPDATE";
-            this.button2.UseVisualStyleBackColor = false;
+            this.UpdateBtn.BackColor = System.Drawing.Color.Teal;
+            this.UpdateBtn.FlatAppearance.BorderSize = 0;
+            this.UpdateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.UpdateBtn.ForeColor = System.Drawing.Color.White;
+            this.UpdateBtn.Location = new System.Drawing.Point(287, 700);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(161, 49);
+            this.UpdateBtn.TabIndex = 23;
+            this.UpdateBtn.Text = "UPDATE";
+            this.UpdateBtn.UseVisualStyleBackColor = false;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // pictureBox3
             // 
@@ -321,12 +327,40 @@ namespace EmployeeManagement
             this.label11.TabIndex = 49;
             this.label11.Text = "Employee";
             // 
+            // EmpList
+            // 
+            this.EmpList.BackColor = System.Drawing.Color.Teal;
+            this.EmpList.FormattingEnabled = true;
+            this.EmpList.ItemHeight = 28;
+            this.EmpList.Location = new System.Drawing.Point(529, 278);
+            this.EmpList.Name = "EmpList";
+            this.EmpList.Size = new System.Drawing.Size(709, 396);
+            this.EmpList.TabIndex = 56;
+            this.EmpList.SelectedIndexChanged += new System.EventHandler(this.EmpList_SelectedIndexChanged);
+            // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.BackColor = System.Drawing.Color.Red;
+            this.DeleteBtn.FlatAppearance.BorderSize = 0;
+            this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteBtn.Location = new System.Drawing.Point(824, 700);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(161, 49);
+            this.DeleteBtn.TabIndex = 57;
+            this.DeleteBtn.Text = "DELETE";
+            this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1251, 825);
+            this.Controls.Add(this.DeleteBtn);
+            this.Controls.Add(this.EmpList);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -334,21 +368,21 @@ namespace EmployeeManagement
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.UpdateBtn);
+            this.Controls.Add(this.AddBtn);
+            this.Controls.Add(this.JDateTb);
+            this.Controls.Add(this.DOBTb);
+            this.Controls.Add(this.EmpDepCb);
+            this.Controls.Add(this.EmpGenderCb);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.SalaryTb);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.EmpNameTb);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -373,20 +407,20 @@ namespace EmployeeManagement
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox EmpNameTb;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox SalaryTb;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox EmpGenderCb;
+        private System.Windows.Forms.ComboBox EmpDepCb;
+        private System.Windows.Forms.DateTimePicker DOBTb;
+        private System.Windows.Forms.DateTimePicker JDateTb;
+        private System.Windows.Forms.Button AddBtn;
+        private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -394,5 +428,7 @@ namespace EmployeeManagement
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ListBox EmpList;
+        private System.Windows.Forms.Button DeleteBtn;
     }
 }

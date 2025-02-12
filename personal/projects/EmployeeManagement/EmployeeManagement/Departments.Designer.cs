@@ -39,14 +39,15 @@ namespace EmployeeManagement
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.EmpLbl = new System.Windows.Forms.Label();
+            this.DepLbl = new System.Windows.Forms.Label();
+            this.SalaryLbl = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.DepList = new System.Windows.Forms.ListBox();
+            this.DeleteBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -66,6 +67,7 @@ namespace EmployeeManagement
             this.UpdateBtn.TabIndex = 40;
             this.UpdateBtn.Text = "UPDATE";
             this.UpdateBtn.UseVisualStyleBackColor = false;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // AddBtn
             // 
@@ -152,38 +154,39 @@ namespace EmployeeManagement
             this.label4.TabIndex = 41;
             this.label4.Text = "Departments List";
             // 
-            // label5
+            // EmpLbl
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.Teal;
-            this.label5.Location = new System.Drawing.Point(607, 209);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 31);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "Employee";
+            this.EmpLbl.AutoSize = true;
+            this.EmpLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EmpLbl.ForeColor = System.Drawing.Color.Teal;
+            this.EmpLbl.Location = new System.Drawing.Point(607, 209);
+            this.EmpLbl.Name = "EmpLbl";
+            this.EmpLbl.Size = new System.Drawing.Size(116, 31);
+            this.EmpLbl.TabIndex = 42;
+            this.EmpLbl.Text = "Employee";
+            this.EmpLbl.Click += new System.EventHandler(this.EmpLbl_Click);
             // 
-            // label6
+            // DepLbl
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.Teal;
-            this.label6.Location = new System.Drawing.Point(845, 209);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 31);
-            this.label6.TabIndex = 43;
-            this.label6.Text = "Departments";
+            this.DepLbl.AutoSize = true;
+            this.DepLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DepLbl.ForeColor = System.Drawing.Color.Teal;
+            this.DepLbl.Location = new System.Drawing.Point(845, 209);
+            this.DepLbl.Name = "DepLbl";
+            this.DepLbl.Size = new System.Drawing.Size(150, 31);
+            this.DepLbl.TabIndex = 43;
+            this.DepLbl.Text = "Departments";
             // 
-            // label7
+            // SalaryLbl
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.Teal;
-            this.label7.Location = new System.Drawing.Point(1113, 209);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 31);
-            this.label7.TabIndex = 44;
-            this.label7.Text = "Salary";
+            this.SalaryLbl.AutoSize = true;
+            this.SalaryLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SalaryLbl.ForeColor = System.Drawing.Color.Teal;
+            this.SalaryLbl.Location = new System.Drawing.Point(1113, 209);
+            this.SalaryLbl.Name = "SalaryLbl";
+            this.SalaryLbl.Size = new System.Drawing.Size(79, 31);
+            this.SalaryLbl.TabIndex = 44;
+            this.SalaryLbl.Text = "Salary";
             // 
             // button3
             // 
@@ -228,12 +231,29 @@ namespace EmployeeManagement
             // 
             // DepList
             // 
+            this.DepList.BackColor = System.Drawing.Color.Teal;
             this.DepList.FormattingEnabled = true;
             this.DepList.ItemHeight = 28;
             this.DepList.Location = new System.Drawing.Point(530, 327);
             this.DepList.Name = "DepList";
             this.DepList.Size = new System.Drawing.Size(709, 424);
             this.DepList.TabIndex = 49;
+            this.DepList.SelectedIndexChanged += new System.EventHandler(this.DepList_SelectedIndexChanged);
+            // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.BackColor = System.Drawing.Color.Red;
+            this.DeleteBtn.FlatAppearance.BorderSize = 0;
+            this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteBtn.Location = new System.Drawing.Point(153, 341);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(161, 49);
+            this.DeleteBtn.TabIndex = 50;
+            this.DeleteBtn.Text = "DELETE";
+            this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // Departments
             // 
@@ -241,14 +261,15 @@ namespace EmployeeManagement
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1251, 825);
+            this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.DepList);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.SalaryLbl);
+            this.Controls.Add(this.DepLbl);
+            this.Controls.Add(this.EmpLbl);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.UpdateBtn);
             this.Controls.Add(this.AddBtn);
@@ -284,13 +305,14 @@ namespace EmployeeManagement
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label EmpLbl;
+        private System.Windows.Forms.Label DepLbl;
+        private System.Windows.Forms.Label SalaryLbl;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ListBox DepList;
+        private System.Windows.Forms.Button DeleteBtn;
     }
 }

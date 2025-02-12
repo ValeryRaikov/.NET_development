@@ -20,7 +20,7 @@ namespace EmployeeManagement
         {
             string oneDrivePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\OneDrive";
             string dbPath = oneDrivePath + @"\Работен плот\Valeri_work\ТУ\6semester\.NET_development\personal\projects\EmployeeManagement\EmployeeDB.mdf";
-            string connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True;Connect Timeout=30";
+            ConnectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True;Connect Timeout=30";
 
             Con = new SqlConnection(ConnectionString);
             Cmd = new SqlCommand();

@@ -123,11 +123,32 @@ namespace lesson01
             // Run(b1.DoStuff, 1, 10);
             // Run(b2.DoStuff, 1, 10);
 
-            var arr = new[] { 1, 2, 3, 4, 5, 6 };
-            var filteredList = Filter(arr, IsMod3);
-            foreach (int item in filteredList)
+            // var arr = new[] { 1, 2, 3, 4, 5, 6 };
+            // var filteredList = Filter(arr, IsMod3);
+            // foreach (int item in filteredList)
+            // {
+            //     Console.WriteLine(item);
+            // }
+
+            Button button = new Button();
+            button.AppendToClick(ButtonClickedBehavior);
+            button.AppendToClick(OtherButtonClickedBehavior);
+
+            button.SimulateClick();
+
+            button._click += ButtonClickedBehavior;
+            button._click += OtherButtonClickedBehavior;
+
+            button.SimulateClick();
+
+            static void ButtonClickedBehavior(Button button)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("Button Clicked!");
+            }
+
+            static void OtherButtonClickedBehavior(Button button)
+            {
+                Console.WriteLine("Other Button Clicked!");
             }
 
             Console.ReadKey();

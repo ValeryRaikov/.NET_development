@@ -39,6 +39,29 @@ namespace SchoolApp
             }
         }
 
+        public void DisplayNoteBook()
+        {
+            Console.WriteLine($"{this} Notebook:");
+
+            foreach(DictionaryEntry entry in NoteBook)
+            {
+                Console.Write($"{entry.Key} -> ");
+
+                foreach(Grade grade in (List<Grade>)entry.Value)
+                {
+                    Console.Write($"{grade}, ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        public void DisplayAbsences()
+        {
+            Console.WriteLine($"{this} Absences:");
+            Console.WriteLine(AbsenceCount);
+        }
+
         public override string ToString()
         {
             return $"Student: {Name}";

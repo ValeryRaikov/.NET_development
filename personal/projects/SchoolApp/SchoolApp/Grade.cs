@@ -31,7 +31,7 @@ namespace SchoolApp
 
         public override string ToString()
         {
-            return $"{Subject}: {Value}";
+            return $"{Value}";
         }
     }
 }

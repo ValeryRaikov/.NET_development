@@ -95,19 +95,26 @@ namespace SchoolApp
             Console.WriteLine($"{st} removed from {sc}.");
         }
 
-        public void AddStudentGrade(Student st, string subject, Grade grade)
+        public void AddStudentGrade(Student st, Grade grade)
         {
             foreach(SchoolClass sc in SchoolClasses)
             {
                 if (sc.GetStudents().Contains(st))
                 {
-                    // TODO
-                    Console.WriteLine($"Added {grade} for {st} in {subject}.");
+                    if (st.NoteBook.ContainsKey(grade.Subject))
+                    {
+                        ((List<Grade>)st.NoteBook[grade.Subject]).Add(grade);
+
+                        Console.WriteLine($"Added {grade} for {st} in {grade.Subject}.");
+                        return;
+                    }
+
+                    Console.WriteLine("No such subject in student's list!");
                     return;
                 }
             }
 
-            Console.WriteLine("Student is not in any of the teacher's classes.");
+            Console.WriteLine("Student is not in any of the teacher's classes!");
         }
 
         public override string ToString()

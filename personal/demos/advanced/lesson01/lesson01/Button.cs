@@ -34,4 +34,16 @@ namespace lesson01
             Click -= click;
         }
     }
+
+    class Hey
+    {
+        public Hey(Button b)
+        {
+            b._click += b_Click;
+        }
+
+        void b_Click(Button button)
+        {
+        }
+    }
 }

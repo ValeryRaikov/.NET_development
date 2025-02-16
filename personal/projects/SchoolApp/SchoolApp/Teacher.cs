@@ -75,6 +75,10 @@ namespace SchoolApp
 
             sc.GetStudents().Add(st);
             Console.WriteLine($"{st} added to {sc}.");
+
+            List<Student> students = FileManager.LoadStudents();
+            students.Add(st);
+            FileManager.SaveStudents(students);
         }
 
         public void RemoveStudent(SchoolClass sc, Student st)
@@ -93,6 +97,10 @@ namespace SchoolApp
 
             sc.GetStudents().Remove(st);
             Console.WriteLine($"{st} removed from {sc}.");
+
+            List<Student> students = FileManager.LoadStudents();
+            students.RemoveAll(x => x.Equals(st));
+            FileManager.SaveStudents(students);
         }
 
         public void AddStudentGrade(Student st, Grade grade)

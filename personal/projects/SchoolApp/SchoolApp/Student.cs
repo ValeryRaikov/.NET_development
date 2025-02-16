@@ -24,6 +24,12 @@ namespace SchoolApp
             protected set { absenceCount = value; }
         }
 
+        public Student() : base("", 0, ' ')
+        {
+            NoteBook = new Hashtable();
+            AbsenceCount = 0;
+        }
+
         public Student(string name, int age, char gender, List<string> subjects) : base(name, age, gender)
         {
             InitializeSubjects(subjects);

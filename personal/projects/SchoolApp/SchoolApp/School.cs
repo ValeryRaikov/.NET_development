@@ -53,6 +53,10 @@ namespace SchoolApp
 
             Director = d;
             Console.WriteLine($"Director changed to: {Director}");
+
+            List<Director> directors = FileManager.LoadDirectors();
+            directors.Add(d);
+            FileManager.SaveDirectors(directors);
         }
 
         public void HireNewTeacher(Teacher t)
@@ -65,6 +69,10 @@ namespace SchoolApp
 
             Teachers.Add(t);
             Console.WriteLine($"{t} hired in {this}");
+
+            List<Teacher> teachers = FileManager.LoadTeachers();
+            teachers.Add(t);
+            FileManager.SaveTeachers(teachers);
         }
 
         public void FireTeacher(Teacher t)
@@ -77,6 +85,10 @@ namespace SchoolApp
 
             Teachers.Remove(t);
             Console.WriteLine($"{t} fired from {this}.");
+
+            List<Teacher> teachers = FileManager.LoadTeachers();
+            teachers.RemoveAll(x => x.Equals(t));
+            FileManager.SaveTeachers(teachers);
         }
 
         public void DisplayStaff()

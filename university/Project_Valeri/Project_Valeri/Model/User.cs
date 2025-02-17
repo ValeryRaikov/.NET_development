@@ -3,7 +3,7 @@ using Project_Valeri.Others;
 
 namespace Project_Valeri.Model
 {
-    internal class User
+    public class User
     {
         private string _name;
         private string _password;

@@ -3,7 +3,7 @@ using Project_Valeri.ViewModel;
 
 namespace Project_Valeri.View
 {
-    internal class UserView
+    public class UserView
     {
         private UserViewModel _viewModel;
 
@@ -29,6 +29,11 @@ namespace Project_Valeri.View
         {
             Console.WriteLine("Hashed password:");
             Console.WriteLine(ViewModel.Password);
+        }
+
+        public void DisplayError()
+        {
+            throw new Exception("Error!");
         }
     }
 }

@@ -3,7 +3,7 @@ using Project_Valeri.Others;
 
 namespace Project_Valeri.ViewModel
 {
-    internal class UserViewModel
+    public class UserViewModel
     {
         private User _user;
 

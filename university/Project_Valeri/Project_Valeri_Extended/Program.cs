@@ -4,6 +4,8 @@ using Project_Valeri.Others;
 using Project_Valeri.ViewModel;
 using Project_Valeri.View;
 using Project_Valeri_Extended.Others;
+using Project_Valeri_Extended.Helpers;
+using Microsoft.Extensions.Logging;
 
 namespace Project_Valeri_Extended
 {
@@ -20,7 +22,17 @@ namespace Project_Valeri_Extended
                 var view = new UserView(viewModel);
 
                 view.Display();
-                view.DisplayError();
+                // view.DisplayError();
+
+                // Test Custom Loggers
+                var logger = LoggerHelper.GetLogger("AppLogger");
+
+                logger.LogInformation("First log");
+                logger.LogWarning("Warning log");
+                logger.LogError("Error log");
+
+                var fileLogger = LoggerHelper.GetLogger("FileLogger");
+                fileLogger.LogInformation("Logging to file!");
             } 
             catch (Exception e)
             {

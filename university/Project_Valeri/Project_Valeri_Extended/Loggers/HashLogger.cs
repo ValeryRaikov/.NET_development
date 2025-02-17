@@ -54,7 +54,43 @@ namespace Project_Valeri_Extended.Loggers
             Console.WriteLine($" {formatter(state, exception)}");
             Console.WriteLine("- LOGGER -");
             Console.ResetColor();
+
             _logMessages[eventId.Id] = message;
+        }
+
+        public void PrintAllMessages()
+        {
+            Console.WriteLine("---- All Logged Messages ----");
+            foreach (var entry in _logMessages)
+            {
+                Console.WriteLine($"EventId: {entry.Key}, Message: {entry.Value}");
+            }
+
+            Console.WriteLine("-----------------------------");
+        }
+
+        public void PrintMessageByEventId(int eventId)
+        {
+            if (_logMessages.TryGetValue(eventId, out var message))
+            {
+                Console.WriteLine($"EventId: {eventId}, Message: {message}");
+            }
+            else
+            {
+                Console.WriteLine($"No log found for EventId: {eventId}");
+            }
+        }
+
+        public void DeleteMessageByEventId(int eventId)
+        {
+            if (_logMessages.TryRemove(eventId, out _))
+            {
+                Console.WriteLine($"Log with EventId {eventId} deleted.");
+            }
+            else
+            {
+                Console.WriteLine($"No log found for EventId: {eventId}.");
+            }
         }
     }
 }

@@ -31,6 +31,12 @@ namespace Project_Valeri.ViewModel
             set { _user.Role = value; }
         }
 
+        public string Email
+        {
+            get { return _user.Email; }
+            set { _user.Email = value; }
+        }
+
         public UserViewModel(User user)
         {
             User = user;

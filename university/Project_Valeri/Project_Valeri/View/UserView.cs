@@ -24,5 +24,11 @@ namespace Project_Valeri.View
             Console.WriteLine($"User: {ViewModel.Name}");
             Console.WriteLine($"Role: {ViewModel.Role}");
         }
+
+        public void DisplayHashedPassword()
+        {
+            Console.WriteLine("Hashed password:");
+            Console.WriteLine(ViewModel.Password);
+        }
     }
 }

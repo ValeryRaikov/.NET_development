@@ -1,4 +1,5 @@
-﻿using Project_Valeri.Others;
+﻿using System;
+using Project_Valeri.Others;
 
 namespace Project_Valeri.Model
 {
@@ -7,6 +8,7 @@ namespace Project_Valeri.Model
         private string _name;
         private string _password;
         private UserRolesEnum _role;
+        private string _email;
 
         public string Name 
         {
@@ -16,7 +18,17 @@ namespace Project_Valeri.Model
         public string Password
         {
             get { return _password; }
-            set { _password = value; }
+            set
+            {
+                if (Utils.IsValidPassword(value))
+                {
+                    _password = Utils.HashPassword(value);
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid Password!");
+                }
+            }
         }
         public UserRolesEnum Role
         {
@@ -24,11 +36,18 @@ namespace Project_Valeri.Model
             set { _role = value; }
         }
 
-        public User(string name, string password, UserRolesEnum role)
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
+
+        public User(string name, string password, UserRolesEnum role, string email)
         {
             Name = name;
             Password = password;
             Role = role;
+            Email = email;
         }
     }
 }

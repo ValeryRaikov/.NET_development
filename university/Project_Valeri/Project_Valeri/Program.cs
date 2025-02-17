@@ -10,11 +10,12 @@ namespace Project_Valeri
     {
         static void Main(string[] args)
         {
-            User u = new User("Valery", "Valercho123", UserRolesEnum.STUDENT);
+            User u = new User("Valery", "Valercho123$", UserRolesEnum.STUDENT, "vraykov@tu-sofia.bg");
             UserViewModel uvm = new UserViewModel(u);
             UserView uv = new UserView(uvm);
 
             uv.Display();
+            uv.DisplayHashedPassword();
 
             Console.ReadKey();
         }

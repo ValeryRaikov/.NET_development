@@ -5,10 +5,18 @@ namespace Project_Valeri.Model
 {
     public class User
     {
+        private int _id;
         private string _name;
         private string _password;
         private UserRolesEnum _role;
         private string _email;
+        private DateTime _expires;
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
         public string Name 
         {
@@ -40,6 +48,12 @@ namespace Project_Valeri.Model
         {
             get { return _email; }
             set { _email = value; }
+        }
+
+        public DateTime Expires
+        {
+            get { return _expires; }
+            set { _expires = value; }
         }
 
         public User(string name, string password, UserRolesEnum role, string email)

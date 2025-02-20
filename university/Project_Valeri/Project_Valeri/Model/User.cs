@@ -12,7 +12,7 @@ namespace Project_Valeri.Model
         private string _email;
         private DateTime _expires;
 
-        public int Id
+        public virtual int Id
         {
             get { return _id; }
             set { _id = value; }
@@ -28,6 +28,9 @@ namespace Project_Valeri.Model
             get { return _password; }
             set
             {
+                /*
+                Commented because of database conflicts...
+
                 if (Utils.IsValidPassword(value))
                 {
                     _password = Utils.HashPassword(value);
@@ -36,6 +39,7 @@ namespace Project_Valeri.Model
                 {
                     throw new ArgumentException("Invalid Password!");
                 }
+                */
             }
         }
         public UserRolesEnum Role

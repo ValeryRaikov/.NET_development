@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Valeri", "Project_Valeri\Project_Valeri.csproj", "{55B6FAAE-7B7D-456C-B417-78614768F0FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project_Valeri", "Project_Valeri\Project_Valeri.csproj", "{55B6FAAE-7B7D-456C-B417-78614768F0FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Valeri_Extended", "Project_Valeri_Extended\Project_Valeri_Extended.csproj", "{D571F393-549A-4BA0-844E-E10E46C7F84D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project_Valeri_Extended", "Project_Valeri_Extended\Project_Valeri_Extended.csproj", "{D571F393-549A-4BA0-844E-E10E46C7F84D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{12CD348C-EF49-447A-939B-A56DA693683B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D571F393-549A-4BA0-844E-E10E46C7F84D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D571F393-549A-4BA0-844E-E10E46C7F84D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D571F393-549A-4BA0-844E-E10E46C7F84D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12CD348C-EF49-447A-939B-A56DA693683B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12CD348C-EF49-447A-939B-A56DA693683B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12CD348C-EF49-447A-939B-A56DA693683B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12CD348C-EF49-447A-939B-A56DA693683B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

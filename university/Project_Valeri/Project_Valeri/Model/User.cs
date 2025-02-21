@@ -28,18 +28,16 @@ namespace Project_Valeri.Model
             get { return _password; }
             set
             {
-                /*
-                Commented because of database conflicts...
+                // if (Utils.IsValidPassword(value))
+                // {
+                //     _password = Utils.HashPassword(value);
+                // }
+                // else
+                // {
+                //     throw new ArgumentException("Invalid Password!");
+                // }
 
-                if (Utils.IsValidPassword(value))
-                {
-                    _password = Utils.HashPassword(value);
-                }
-                else
-                {
-                    throw new ArgumentException("Invalid Password!");
-                }
-                */
+                _password = value;
             }
         }
         public UserRolesEnum Role

@@ -6,9 +6,10 @@ using Project_Valeri.Others;
 
 namespace DataLayer.Database
 {
-    internal class DatabaseContext : DbContext
+    public class DatabaseContext : DbContext
     {
         public DbSet<DatabaseUser> Users { get; set; }
+        public DbSet<LogEntry> Logs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

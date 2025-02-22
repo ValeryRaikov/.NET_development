@@ -35,7 +35,7 @@ namespace ReserveRoom
                     new DateTime(2000, 1, 4)
                 ));
 
-                IEnumerable<Reservation> reservations = hotel.GetReservationsForUser("Intercontinental");
+                IEnumerable<Reservation> reservations = hotel.GetAllReservations();
             }
             catch (ReservationConflictException ex)
             {

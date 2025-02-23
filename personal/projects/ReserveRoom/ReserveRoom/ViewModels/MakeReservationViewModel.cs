@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
+using ReserveRoom.Commands;
+using ReserveRoom.Models;
 
 namespace ReserveRoom.ViewModels
 {
@@ -8,8 +10,8 @@ namespace ReserveRoom.ViewModels
         private string _username;
         private int _floorNumber;
         private int _roomNumber;
-        private DateTime _startDate;
-        private DateTime _endDate;
+        private DateTime _startDate = DateTime.Now;
+        private DateTime _endDate = DateTime.Now;
 
         public string Username
         {
@@ -65,9 +67,10 @@ namespace ReserveRoom.ViewModels
 
         public ICommand CancelCommand { get; }
 
-        public MakeReservationViewModel()
+        public MakeReservationViewModel(Hotel hotel)
         {
-
+            SubmitCommand = new MakeReservationCommand(this, hotel);
+            CancelCommand = new CancelMakeReservationCommand();
         }
     }
 }

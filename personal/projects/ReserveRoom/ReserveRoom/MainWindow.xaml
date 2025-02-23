@@ -12,6 +12,6 @@
         FontSize="14"
         >
     <Grid>
-        <views:MakeReservationView />
+        <views:ReservationListingView DataContext="{Binding CurrentViewModel}" />
     </Grid>
 </Window>

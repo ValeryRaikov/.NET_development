@@ -28,20 +28,18 @@
             <Button 
                 Grid.Column="1"
                 Content="Make Reservation" 
+                Command="{Binding MakeReservationCommand}"
                 Margin="10 0 0 0"
             />
         </Grid>
 
-        <ListView Grid.Row="1" Margin="0 25 0 0">
-            <ListView />
-            <ListView />
-            <ListView />
+        <ListView Grid.Row="1" Margin="0 25 0 0" ItemsSource="{Binding Reservations}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Room ID">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Text="12" />
+                                <TextBox Text="{Binding RoomID, Mode=OneWay}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -49,7 +47,7 @@
                     <GridViewColumn Header="Username">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Text="Valery" Padding="0 0 20 0" />
+                                <TextBox Text="{Binding Username, Mode=OneWay}" Padding="0 0 20 0" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -57,7 +55,7 @@
                     <GridViewColumn Header="Start Date">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Text="8/10/2024" Padding="0 0 20 0" />
+                                <TextBox Text="{Binding StartDate, Mode=OneWay}" Padding="0 0 20 0" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -65,7 +63,7 @@
                     <GridViewColumn Header="End Date">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Text="10/10/2024" Padding="0 0 20 0" />
+                                <TextBox Text="{Binding EndDate, Mode=OneWay}" Padding="0 0 20 0" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

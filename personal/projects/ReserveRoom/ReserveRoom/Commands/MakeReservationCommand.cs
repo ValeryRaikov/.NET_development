@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 using ReserveRoom.Exceptions;
 using ReserveRoom.Models;
+using ReserveRoom.Services;
 using ReserveRoom.ViewModels;
 
 namespace ReserveRoom.Commands
@@ -11,11 +12,14 @@ namespace ReserveRoom.Commands
     {
         private readonly MakeReservationViewModel _makeReservationViewModel;
         private readonly Hotel _hotel;
+        private readonly NavigationService _reservationViewNavigationService;
 
-        public MakeReservationCommand(MakeReservationViewModel makeReservationViewModel, Hotel hotel)
+        public MakeReservationCommand(MakeReservationViewModel makeReservationViewModel, Hotel hotel, 
+            NavigationService reservationViewNavigationService)
         {
             _makeReservationViewModel = makeReservationViewModel;
             _hotel = hotel;
+            _reservationViewNavigationService = reservationViewNavigationService;
 
             _makeReservationViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
@@ -42,6 +46,8 @@ namespace ReserveRoom.Commands
                 _hotel.MakeReservation(reservation);
 
                 MessageBox.Show("Successfully reserved room.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                _reservationViewNavigationService.Navigate();
             }
             catch (ReservationConflictException)
             {

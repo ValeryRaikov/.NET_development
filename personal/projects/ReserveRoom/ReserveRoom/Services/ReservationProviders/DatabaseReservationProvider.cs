@@ -29,7 +29,7 @@ namespace ReserveRoom.Services.ReservationProviders
 
         private static Reservation ToReservation(ReservationDTO dto)
         {
-            return new Reservation(new RoomID(dto.FloorNumber, dto.RoomNumber), dto.Username, dto.StartTime, dto.EndTime));
+            return new Reservation(new RoomID(dto.FloorNumber, dto.RoomNumber), dto.Username, dto.StartTime, dto.EndTime);
         }
     }
 }

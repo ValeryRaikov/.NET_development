@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using ReserveRoom.DbContexts;
 using ReserveRoom.Exceptions;
 using ReserveRoom.Models;
 using ReserveRoom.Services;
+using ReserveRoom.Services.ReservationConflictValidators;
+using ReserveRoom.Services.ReservationCreators;
+using ReserveRoom.Services.ReservationProviders;
 using ReserveRoom.Stores;
 using ReserveRoom.ViewModels;
 
@@ -21,19 +18,26 @@ namespace ReserveRoom
     public partial class App : Application
     {
         private const string CONNECTION_STRING = "Data Source=reserveroom.db";
+
         private readonly Hotel _hotel;
         private readonly NavigationStore _navigationStore;
+        private readonly ReserveRoomDbContextFactory _reserveRoomDbContextFactory;
 
         public App()
         {
-            _hotel = new Hotel("Intercontinental");
+            _reserveRoomDbContextFactory = new ReserveRoomDbContextFactory(CONNECTION_STRING);
+
+            IReservationProvider reservationProvider = new DatabaseReservationProvider(_reserveRoomDbContextFactory);
+            IReservationCreator reservationCreator = new DatabaseReservationCreator(_reserveRoomDbContextFactory);
+            IReservationConflictValidator reservationConflictValidator = new DatabaseReservationConflictValidator(_reserveRoomDbContextFactory);
+            _hotel = new Hotel("Intercontinental", new ReservationBook(reservationProvider, reservationCreator, reservationConflictValidator));
             _navigationStore = new NavigationStore();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(CONNECTION_STRING).Options;
-            using (ReserveRoomDbContext dbContext = new ReserveRoomDbContext(options))
+            using (ReserveRoomDbContext dbContext = _reserveRoomDbContextFactory.CreateDbContext())
             {
                 dbContext.Database.Migrate();
             }
@@ -57,7 +61,7 @@ namespace ReserveRoom
 
         private ReservationListingViewModel CreateReservationViewModel()
         {
-            return new ReservationListingViewModel(_hotel, new NavigationService(_navigationStore, CreateMakeReservationViewModel));
+            return ReservationListingViewModel.LoadViewModel(_hotel, new NavigationService(_navigationStore, CreateMakeReservationViewModel));
         }
     }
 }

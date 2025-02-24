@@ -18,13 +18,5 @@ namespace ReserveRoom.Models
             StartTime = startTime;
             EndTime = endTime;
         }
-
-        public bool Conflicts(Reservation reservation)
-        {
-            if (reservation.RoomID != RoomID)
-                return false;
-
-            return reservation.StartTime < EndTime && reservation.EndTime > reservation.StartTime; 
-        }
     }
 }

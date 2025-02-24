@@ -11,40 +11,35 @@ namespace ReserveRoom.ViewModels
 {
     public class ReservationListingViewModel : ViewModelBase
     {
-        private readonly Hotel _hotel;
         private readonly ObservableCollection<ReservationViewModel> _reservations;
 
         public IEnumerable<ReservationViewModel> Reservations => _reservations;
 
+        public ICommand LoadReservationCommand { get; }
         public ICommand MakeReservationCommand { get; }
 
         public ReservationListingViewModel(Hotel hotel, NavigationService makeReservationNavigationService)
         {
-            _hotel = hotel;
             _reservations = new ObservableCollection<ReservationViewModel>();
 
+            LoadReservationCommand = new LoadReservationCommand(this, hotel);
             MakeReservationCommand = new NavigateCommand(makeReservationNavigationService);
-
-            /*
-            _reservations.Add(
-                new ReservationViewModel(new Reservation(new RoomID(1, 2), "Valery", DateTime.Now, DateTime.Now.AddDays(2)))
-            );
-            _reservations.Add(
-                new ReservationViewModel(new Reservation(new RoomID(2, 3), "Meggie", DateTime.Now, DateTime.Now.AddDays(5)))
-            );
-            _reservations.Add(
-                 new ReservationViewModel(new Reservation(new RoomID(1, 4), "Ivaylo", DateTime.Now, DateTime.Now.AddDays(3)))
-            );
-            */
-
-            UpdateReservations();
         }
 
-        private void UpdateReservations()
+        public static ReservationListingViewModel LoadViewModel(Hotel hotel, NavigationService makeReservationNavigationService)
+        {
+            ReservationListingViewModel viewModel = new ReservationListingViewModel(hotel, makeReservationNavigationService);
+
+            viewModel.LoadReservationCommand.Execute(null);
+
+            return viewModel;
+        }
+
+        public void UpdateReservations(IEnumerable<Reservation> reservations)
         {
             _reservations.Clear();
 
-            foreach (Reservation reservation in _hotel.GetAllReservations())
+            foreach (Reservation reservation in reservations)
             {
                 ReservationViewModel reservationViewModel = new ReservationViewModel(reservation);
                 _reservations.Add(reservationViewModel);

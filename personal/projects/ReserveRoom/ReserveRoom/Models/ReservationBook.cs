@@ -1,32 +1,37 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 using ReserveRoom.Exceptions;
+using ReserveRoom.Services.ReservationCreators;
+using ReserveRoom.Services.ReservationProviders;
 
 namespace ReserveRoom.Models
 {
     class ReservationBook
     {
-        private readonly List<Reservation> _rservations;
+        private readonly IReservationProvider _reservationProvider;
+        private readonly IReservationCreator _reservationCreator;
 
-        public ReservationBook()
+        public ReservationBook(IReservationProvider reservationProvider, IReservationCreator reservationCreator)
         {
-            _rservations = new List<Reservation>();
+            _reservationProvider = reservationProvider;
+            _reservationCreator = reservationCreator;
         }
 
-        public IEnumerable<Reservation> GetAllReservations()
+        public async Task<IEnumerable<Reservation>> GetAllReservations()
         {
-            return _rservations;
+            return await _reservationProvider.GetAllReservations();
         }
 
-        public void AddReservation(Reservation reservation)
+        public async Task AddReservation(Reservation reservation)
         {
-            foreach (var existingReservation in _rservations)
-            {
-                if (existingReservation.Conflicts(reservation))
-                    throw new ReservationConflictException(existingReservation, reservation);
-            }
+            // foreach (var existingReservation in _reservations)
+            // {
+            //     if (existingReservation.Conflicts(reservation))
+            //         throw new ReservationConflictException(existingReservation, reservation);
+            // }
+            // TODO -> Database Query
 
-            _rservations.Add(reservation);
+            await _reservationCreator.CreateReservation(reservation);
         }
     }
 }

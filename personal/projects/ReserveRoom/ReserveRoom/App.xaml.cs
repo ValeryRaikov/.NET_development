@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.EntityFrameworkCore;
+using ReserveRoom.DbContexts;
 using ReserveRoom.Exceptions;
 using ReserveRoom.Models;
 using ReserveRoom.Services;
@@ -18,6 +20,7 @@ namespace ReserveRoom
     /// </summary>
     public partial class App : Application
     {
+        private const string CONNECTION_STRING = "Data Source=reserveroom.db";
         private readonly Hotel _hotel;
         private readonly NavigationStore _navigationStore;
 
@@ -29,6 +32,12 @@ namespace ReserveRoom
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(CONNECTION_STRING).Options;
+            using (ReserveRoomDbContext dbContext = new ReserveRoomDbContext(options))
+            {
+                dbContext.Database.Migrate();
+            }
+
             _navigationStore.CurrentViewModel = CreateReservationViewModel();
 
             MainWindow = new MainWindow()

@@ -20,6 +20,7 @@ namespace ReserveRoom
         private const string CONNECTION_STRING = "Data Source=reserveroom.db";
 
         private readonly Hotel _hotel;
+        private readonly HotelStore _hotelStore;
         private readonly NavigationStore _navigationStore;
         private readonly ReserveRoomDbContextFactory _reserveRoomDbContextFactory;
 
@@ -30,7 +31,9 @@ namespace ReserveRoom
             IReservationProvider reservationProvider = new DatabaseReservationProvider(_reserveRoomDbContextFactory);
             IReservationCreator reservationCreator = new DatabaseReservationCreator(_reserveRoomDbContextFactory);
             IReservationConflictValidator reservationConflictValidator = new DatabaseReservationConflictValidator(_reserveRoomDbContextFactory);
+            
             _hotel = new Hotel("Intercontinental", new ReservationBook(reservationProvider, reservationCreator, reservationConflictValidator));
+            _hotelStore = new HotelStore(_hotel);
             _navigationStore = new NavigationStore();
         }
 
@@ -56,12 +59,12 @@ namespace ReserveRoom
 
         private MakeReservationViewModel CreateMakeReservationViewModel()
         {
-            return new MakeReservationViewModel(_hotel, new NavigationService(_navigationStore, CreateReservationViewModel));
+            return new MakeReservationViewModel(_hotelStore, new NavigationService(_navigationStore, CreateReservationViewModel));
         }
 
         private ReservationListingViewModel CreateReservationViewModel()
         {
-            return ReservationListingViewModel.LoadViewModel(_hotel, new NavigationService(_navigationStore, CreateMakeReservationViewModel));
+            return ReservationListingViewModel.LoadViewModel(_hotelStore, new NavigationService(_navigationStore, CreateMakeReservationViewModel));
         }
     }
 }

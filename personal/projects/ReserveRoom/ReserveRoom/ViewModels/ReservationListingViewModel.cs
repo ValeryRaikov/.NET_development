@@ -18,17 +18,17 @@ namespace ReserveRoom.ViewModels
         public ICommand LoadReservationCommand { get; }
         public ICommand MakeReservationCommand { get; }
 
-        public ReservationListingViewModel(Hotel hotel, NavigationService makeReservationNavigationService)
+        public ReservationListingViewModel(HotelStore hotelStore, NavigationService makeReservationNavigationService)
         {
             _reservations = new ObservableCollection<ReservationViewModel>();
 
-            LoadReservationCommand = new LoadReservationCommand(this, hotel);
+            LoadReservationCommand = new LoadReservationCommand(this, hotelStore);
             MakeReservationCommand = new NavigateCommand(makeReservationNavigationService);
         }
 
-        public static ReservationListingViewModel LoadViewModel(Hotel hotel, NavigationService makeReservationNavigationService)
+        public static ReservationListingViewModel LoadViewModel(HotelStore hotelStore, NavigationService makeReservationNavigationService)
         {
-            ReservationListingViewModel viewModel = new ReservationListingViewModel(hotel, makeReservationNavigationService);
+            ReservationListingViewModel viewModel = new ReservationListingViewModel(hotelStore, makeReservationNavigationService);
 
             viewModel.LoadReservationCommand.Execute(null);
 

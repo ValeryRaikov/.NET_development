@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MinimalMVVM.ViewModel;
 
 namespace MinimalMVVM.View
 {
@@ -21,6 +22,7 @@ namespace MinimalMVVM.View
         public MainWindow()
         {
             InitializeComponent();
+            // this.DataContext = new MainViewModel(); -> Programmatically reference here
         }
     }
 }

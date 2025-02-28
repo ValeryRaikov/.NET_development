@@ -4,23 +4,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:ViewModel="clr-namespace:MinimalMVVM.ViewModel"
-        Title="MainWindow" Height="366" Width="300"
+        Title="MainWindow" Height="400" Width="320"
         mc:Ignorable="d">
-    
+
     <Window.DataContext>
-        <ViewModel:Presenter/>
+        <ViewModel:MainViewModel/>
     </Window.DataContext>
-    
+
     <Window.InputBindings>
-        <KeyBinding Key="Enter" Command="{Binding ConvertTextCommand}"/>
+        <KeyBinding Key="Enter" Command="{Binding CurrentViewModel.ConvertTextCommand}"/>
     </Window.InputBindings>
-    
-    <StackPanel Height="336">
-        <Label Foreground="Blue" Margin="5,5,5,0">Text To Convert</Label>
-        <TextBox Text="{Binding SomeText, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
-        <Label Foreground="Blue" Margin="5,5,5,0">History</Label>
-        <ListBox ItemsSource="{Binding History}" Height="200" Margin="5"/>
-        <Button Command="{Binding ConvertTextCommand}" Margin="5">Convert</Button>
+
+    <StackPanel Height="360">
+        <Button Command="{Binding SwitchViewModelCommand}" Margin="5">
+            Toggle Upper/Lower Mode
+        </Button>
+
+        <ContentControl Content="{Binding CurrentViewModel}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Foreground="Blue" Margin="5,5,5,0">Text To Convert</Label>
+                        <TextBox Text="{Binding SomeText, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+                        <Label Foreground="Blue" Margin="5,5,5,0">History</Label>
+                        <ListBox ItemsSource="{Binding History}" Height="200" Margin="5"/>
+                        <Button Command="{Binding ConvertTextCommand}" Margin="5">Convert</Button>
+                    </StackPanel>
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
     </StackPanel>
-    
+
 </Window>

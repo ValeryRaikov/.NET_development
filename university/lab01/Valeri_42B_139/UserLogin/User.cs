@@ -11,14 +11,14 @@ namespace UserLogin
         public string Username { get; set; }
         public string Password { get; set; }
         public string FacultyNumber { get; set; }
-        public int UserRole { get; set; }
+        public UserRoles UserRole { get; set; }
 
-        public User(string _username, string _password, string _facultyNumber, int _userRole)
+        public User(string username, string password, string facultyNumber, UserRoles userRole)
         {
-            Username = _username;
-            Password = _password;
-            FacultyNumber = _facultyNumber;
-            UserRole = _userRole;
+            Username = username;
+            Password = password;
+            FacultyNumber = facultyNumber;
+            UserRole = userRole;
         }
     }
 }

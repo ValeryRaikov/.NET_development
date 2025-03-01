@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVMDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:vw="clr-namespace:MVVMDemo.Views"
+        Title="MainWindow" Height="400" Width="400">
     <Grid>
-
+        <vw:EmployeeView />
     </Grid>
 </Window>

@@ -40,6 +40,11 @@ namespace MVVMDemo.Models
             }
         }
 
+        public Employee()
+        {
+
+        }
+
         public Employee(int id, string name, int age)
         {
             Id = id;

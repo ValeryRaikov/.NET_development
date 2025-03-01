@@ -51,29 +51,33 @@
             Name="txtId"
             Grid.Row="1"
             Grid.Column="1" Margin="5,8,5,8" Padding="3,3,3,2"
+            Text="{Binding CurrentEmployee.Id}"
         />
         <TextBox 
             Name="txtName"
             Grid.Row="2"
+            Text="{Binding CurrentEmployee.Name}"
             Grid.Column="1" Margin="5,8,5,8" Padding="3,3,3,2"
         />
         <TextBox 
             Name="txtAge"
             Grid.Row="3"
+            Text="{Binding CurrentEmployee.Age}"
             Grid.Column="1" Margin="5,8,5,8" Padding="3,3,3,3"
         />
 
         <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
-            <Button Name="btnAdd" Content="Add" Margin="5,8,5,8" Padding="3,3,3,2" />
-            <Button Name="btnSearch" Content="Search" Margin="5,8,5,8" Padding="3,3,3,2" />
-            <Button Name="btnUpdate" Content="Update" Margin="5,8,5,8" Padding="3,3,3,2" />
-            <Button Name="btnDelete" Content="Delete" Margin="5,8,5,8" Padding="3,3,3,2" />
+            <Button Name="btnAdd" Content="Add" Command="{Binding SaveCommand}" Margin="5,8,5,8" Padding="3,3,3,2" />
+            <Button Name="btnSearch" Content="Search" Command="{Binding SearchCommand}" Margin="5,8,5,8" Padding="3,3,3,2" />
+            <Button Name="btnUpdate" Content="Update" Command="{Binding UpdateCommand}" Margin="5,8,5,8" Padding="3,3,3,2" />
+            <Button Name="btnDelete" Content="Delete" Command="{Binding DeleteCommand}" Margin="5,8,5,8" Padding="3,3,3,2" />
         </StackPanel>
 
         <TextBlock
             Name="txtBlockMessage"
             Grid.Row="5"
             Grid.Column="1"
+            Text="{Binding Message}"
         />
 
         <DataGrid 

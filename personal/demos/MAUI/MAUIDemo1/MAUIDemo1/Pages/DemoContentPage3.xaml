@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIDemo1.Pages.DemoContentPage3"
+             Title="DemoContentPage3"
+             >
+    <VerticalStackLayout>
+        <Label 
+            Text="This is content page 3"
+            FontSize="20"
+            FontAttributes="Bold"
+            Margin="20"
+            TextColor="White"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Button 
+            x:Name="closeBtn"
+            Text="Close" 
+            Margin="20"
+            Clicked="closeBtn_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

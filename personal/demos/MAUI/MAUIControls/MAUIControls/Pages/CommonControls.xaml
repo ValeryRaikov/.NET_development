@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIControls.Pages.CommonControls"
+             Title="Common Controls"
+             BackgroundColor="White">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Frame BackgroundColor="#EAEAEA" Margin="10">
+                <VerticalStackLayout>
+                    <Label 
+                        Text="Valery Raikov"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        TextColor="#181C3F"/>
+                </VerticalStackLayout>
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA" Margin="10">
+                <Border Padding="10" StrokeThickness="5" Stroke="Red" BackgroundColor="#EAEAEA">
+                    <Label Text="Welcome" HorizontalOptions="Center" />
+                </Border>
+            </Frame>
+            <WebView Source="https://github.com/ValeryRaikov" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

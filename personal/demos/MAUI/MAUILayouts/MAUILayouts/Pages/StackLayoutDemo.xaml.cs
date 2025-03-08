@@ -21,4 +21,14 @@ public partial class StackLayoutDemo : ContentPage
     {
         Navigation.PushAsync(new GridDemo());
     }
+
+    private void absoluteLayoutBtn_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new AbsoluteLayoutDemo());
+    }
+
+    private void flexLayoutBtn_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new FlexLayoutDemo());
+    }
 }

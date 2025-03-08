@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUILayouts.Pages.FlexLayoutDemo"
+             Title="Flex Layout Demo"
+             BackgroundColor="White">
+    <FlexLayout Direction="ColumnReverse" AlignItems="Start">
+        <Button Text="Demo 1" FlexLayout.Grow="1" BackgroundColor="DarkGreen" />
+        <Button Text="Demo 2" FlexLayout.Basis="200" FlexLayout.Order="-1" BackgroundColor="DarkRed" />
+        <Label BackgroundColor="DarkGray" Text="Welocome to MAUI Demos" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" Padding="10" />
+        <FlexLayout FlexLayout.Grow="1">
+            <VerticalStackLayout BackgroundColor="Beige" FlexLayout.Basis="50">
+            </VerticalStackLayout>
+            <VerticalStackLayout BackgroundColor="LightGreen" FlexLayout.Grow="1">
+            </VerticalStackLayout>
+        </FlexLayout>
+        <Label BackgroundColor="DarkGray" Text="Thanks for visiting" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" Padding="10" />
+    </FlexLayout>
+</ContentPage>

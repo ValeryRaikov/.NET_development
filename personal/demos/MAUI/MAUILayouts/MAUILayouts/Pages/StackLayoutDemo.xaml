@@ -8,7 +8,7 @@
         <StackLayout 
             Padding="20" 
             Spacing="10" 
-            Orientation="Horizontal"
+            Orientation="Vertical"
             HorizontalOptions="Center"
             VerticalOptions="End"
             BackgroundColor="Grey"
@@ -22,8 +22,8 @@
             <Button x:Name="verticalStackLayoutBtn" Text="Vertical Stack Layout" Clicked="verticalStackLayoutBtn_Clicked" />
             <Button x:Name="horizontalStackLayoutBtn" Text="Horizontal Stack Layout" Clicked="horizontalStackLayoutBtn_Clicked" />
             <Button x:Name="gridLayoutBtn" Text="Grid Layout" Clicked="gridLayoutBtn_Clicked" />
-            <Button Text="Demo button 04" />
-            <Button Text="Demo button 05" />
+            <Button x:Name="absoluteLayoutBtn" Text="Absolute Layout" Clicked="absoluteLayoutBtn_Clicked" />
+            <Button x:Name="flexLayoutBtn" Text="Flex Layout" Clicked="flexLayoutBtn_Clicked" />
             <Button Text="Demo button 06" />
             <Button Text="Demo button 07" />
             <Button Text="Demo button 08" />

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIDemo1.Pages.NavigationPages.NavContentPage1"
+             Title="NavContentPage1"
+             BackgroundColor="#611726">
+    <VerticalStackLayout>
+        <Label 
+            Text="This is nav page 1"
+            FontSize="20"
+            FontAttributes="Bold"
+            Margin="20"
+            TextColor="White"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Button 
+            x:Name="navContentPage2Btn"
+            Text="Open Nav Page 2" 
+            Margin="20"
+            Clicked="navContentPage2Btn_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

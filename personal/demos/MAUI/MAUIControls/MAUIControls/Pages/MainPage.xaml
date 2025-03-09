@@ -13,6 +13,7 @@
             <Button x:Name="drawingControlsBtn" BackgroundColor="#f25365" Text="Drawing Controls" TextColor="White" Clicked="drawingControlsBtn_Clicked" />
             <Button x:Name="carouselViewBtn" BackgroundColor="#f25365" Text="Carousel View" TextColor="White" Clicked="carouselViewBtn_Clicked" />
             <Button x:Name="indicatorViewBtn" BackgroundColor="#f25365" Text="Indicator View" TextColor="White" Clicked="indicatorViewBtn_Clicked" />
+            <Button x:Name="listViewBtn" BackgroundColor="#f25365" Text="List View" TextColor="White" Clicked="listViewBtn_Clicked" />
         </VerticalStackLayout>
     </FlexLayout>
 </ContentPage>

@@ -41,4 +41,9 @@ public partial class MainPage : ContentPage
     {
         Navigation.PushAsync(new IndicatorView());
     }
+
+    private void listViewBtn_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new ListViewDemo());
+    }
 }

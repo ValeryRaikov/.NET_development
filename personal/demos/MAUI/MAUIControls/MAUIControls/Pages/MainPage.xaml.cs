@@ -11,4 +11,24 @@ public partial class MainPage : ContentPage
     {
 		Navigation.PushAsync(new CommonControls());
     }
+
+    private void actionControlsBtn_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new ActionControls());
+    }
+
+    private void inputControlsBtn_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new InputControls());
+    }
+
+    private void indicatorControlsBtn_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new IndicatorControls());
+    }
+
+    private void drawingControlsBtn_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new DrawingControls());
+    }
 }

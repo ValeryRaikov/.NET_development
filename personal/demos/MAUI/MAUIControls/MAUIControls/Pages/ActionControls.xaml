@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIControls.Pages.ActionControls"
+             Title="Action Controls"
+             BackgroundColor="#EAEAEA">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Frame BackgroundColor="#EAEAEA" Margin="10">
+                <Button x:Name="demoBtn" BackgroundColor="#F25365" Text="Click Me" Clicked="demoBtn_Clicked" />
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA" Margin="10">
+                <ImageButton x:Name="demoImageBtn" Source="download_icon.jpg" Clicked="demoImageBtn_Clicked" HeightRequest="50" />
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA" Margin="10">
+                <SearchBar x:Name="demoSearchBar" SearchButtonPressed="demoSearchBar_SearchButtonPressed" />
+            </Frame>
+            <SwipeView>
+                <SwipeView.LeftItems>
+                    <SwipeItems>
+                        <SwipeItem x:Name="facebookSwipeItem" BackgroundColor="#1877F2" Text="Facebook" Invoked="facebookSwipeItem_Invoked" />
+                        <SwipeItem x:Name="instagramSwipeItem" BackgroundColor="#FF417B" Text="Instagram" Invoked="instagramSwipeItem_Invoked" />
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+                <SwipeView.RightItems>
+                    <SwipeItem x:Name="twitterSwipeItem" BackgroundColor="#1877F2" Text="Twitter" Invoked="twitterSwipeItem_Invoked" />
+                    <SwipeItem x:Name="linkedInSwipeItem" BackgroundColor="#1877F2" Text="LinkedIn" Invoked="linkedInSwipeItem_Invoked" />
+                </SwipeView.RightItems>
+                <VerticalStackLayout>
+                    <Label
+                        Text="This is a Swipe View"
+                        BackgroundColor="Gray"
+                        Padding="15"
+                        FontSize="18"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                    />
+                </VerticalStackLayout>
+            </SwipeView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

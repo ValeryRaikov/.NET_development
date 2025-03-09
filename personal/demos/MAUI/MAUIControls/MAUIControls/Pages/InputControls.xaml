@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIControls.Pages.InputControls"
+             Title="Input Controls"
+             BackgroundColor="#EAEAEA">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Frame BackgroundColor="#EAEAEA">
+                <Entry Placeholder="Enter your text here..." PlaceholderColor="Red" />
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA">
+                <Editor Placeholder="Editor" AutoSize="TextChanges" />
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA">
+                <HorizontalStackLayout>
+                    <CheckBox />
+                    <Label Text="Checkbox 01" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA">
+                <VerticalStackLayout>
+                    <RadioButton GroupName="Group1" Content="Option 1" />
+                    <RadioButton GroupName="Group1" Content="Option 2" />
+                    <RadioButton GroupName="Group1" Content="Option 3" />
+                    <RadioButton Content="Option 4" />
+                    <RadioButton Content="Option 5" />
+                    <RadioButton Content="Option 6" />
+                </VerticalStackLayout>
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA">
+                <VerticalStackLayout>
+                    <Slider 
+                        Minimum="1" 
+                        Maximum="100" 
+                        MinimumTrackColor="Black" 
+                        MaximumTrackColor="Red" 
+                        ThumbColor="Green"
+                        ValueChanged="Slider_ValueChanged" 
+                    />
+                    <Label x:Name="sliderValueLbl" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA">
+                <Stepper 
+                    HorizontalOptions="Center" 
+                    ValueChanged="Stepper_ValueChanged"
+                    Minimum="5"
+                    Maximum="20"
+                    Increment="2"
+                />
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA">
+                <Switch HorizontalOptions="Center" />
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA">
+                <DatePicker />
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA">
+                <TimePicker />
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

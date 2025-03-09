@@ -1,0 +1,40 @@
+ <?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIControls.Pages.DrawingControls"
+             Title="Drawing Controls"
+             BackgroundColor="#EAEAEA">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Frame BackgroundColor="#EAEAEA">
+                <BoxView 
+                    WidthRequest="200"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Color="Brown"
+                    CornerRadius="10"
+                />
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA">
+                <Rectangle 
+                    WidthRequest="200"
+                    HeightRequest="100"
+                    Fill="Black"
+                    RadiusX="10"
+                    RadiusY="10"
+                    Stroke="Red"
+                    StrokeThickness="10"
+                />
+            </Frame>
+            <Frame BackgroundColor="#EAEAEA">
+                <Line 
+                    X1="0" Y1="0" X2="150" Y2="90"
+                    Stroke="Blue"
+                    StrokeThickness="10"
+                />
+            </Frame>
+            
+            <!-- And many more... -->
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

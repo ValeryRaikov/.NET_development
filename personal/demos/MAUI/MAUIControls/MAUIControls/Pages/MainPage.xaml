@@ -11,6 +11,8 @@
             <Button x:Name="inputControlsBtn" BackgroundColor="#f25365" Text="Input Controls" TextColor="White" Clicked="inputControlsBtn_Clicked" />
             <Button x:Name="indicatorControlsBtn" BackgroundColor="#f25365" Text="Indicator Controls" TextColor="White" Clicked="indicatorControlsBtn_Clicked" />
             <Button x:Name="drawingControlsBtn" BackgroundColor="#f25365" Text="Drawing Controls" TextColor="White" Clicked="drawingControlsBtn_Clicked" />
+            <Button x:Name="carouselViewBtn" BackgroundColor="#f25365" Text="Carousel View" TextColor="White" Clicked="carouselViewBtn_Clicked" />
+            <Button x:Name="indicatorViewBtn" BackgroundColor="#f25365" Text="Indicator View" TextColor="White" Clicked="indicatorViewBtn_Clicked" />
         </VerticalStackLayout>
     </FlexLayout>
 </ContentPage>

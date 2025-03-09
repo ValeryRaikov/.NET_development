@@ -31,4 +31,14 @@ public partial class MainPage : ContentPage
     {
         Navigation.PushAsync(new DrawingControls());
     }
+
+    private void carouselViewBtn_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new CarouselView());
+    }
+
+    private void indicatorViewBtn_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new IndicatorView());
+    }
 }

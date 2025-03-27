@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SQLiteDbConf.TodoListPage"
+             Title="TodoListPage">
+    
+    <StackLayout Padding="20">
+
+        <Label Text="Todo List" FontSize="Large" HorizontalOptions="Center"/>
+
+        <ListView x:Name="TodoListView" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Label Text="{Binding Name}" VerticalOptions="Center" WidthRequest="200"/>
+                            <CheckBox IsChecked="{Binding Done}" VerticalOptions="Center"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Text="Add Item" Clicked="OnAddItemClicked" Margin="0, 0, 0, 10" BackgroundColor="Green"/>
+        <Button Text="Delete Item" Clicked="OnDeleteItemClicked" BackgroundColor="Red"/>
+
+    </StackLayout>
+    
+</ContentPage>

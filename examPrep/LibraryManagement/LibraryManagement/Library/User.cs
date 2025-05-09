@@ -5,6 +5,7 @@
         private string _name;
         private string _email;
         private string _phoneNumber;
+        private IOOperation[] _operations;
 
         public string Name
         {
@@ -22,6 +23,12 @@
         {
             get { return _phoneNumber; }
             set { _phoneNumber = value; }
+        }
+
+        public IOOperation[] Operations
+        {
+            get { return _operations; }
+            set { _operations = value; }
         }
 
         public User() {}

@@ -1,0 +1,34 @@
+﻿namespace LibraryManagement.Library
+{
+    public class Services
+    {
+        List<User> users = new List<User>();
+        List<string> usernames = new List<string>();
+
+        public void AddUser(User u)
+        {
+            users.Add(u);
+            usernames.Add(u.Name);
+        }
+
+        public int Login(string phoneNumber, string email)
+        {
+            int found = -1;
+            foreach (User u in users)
+            {
+                if (u.PhoneNumber.Equals(phoneNumber) && u.Email.Equals(email))
+                {
+                    found = users.IndexOf(u);
+                    break;
+                }
+            }
+
+            return found;
+        }
+
+        public User getUser(int found)
+        {
+            return users[found];
+        }
+    }
+}

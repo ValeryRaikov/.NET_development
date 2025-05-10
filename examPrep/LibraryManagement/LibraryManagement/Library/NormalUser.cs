@@ -31,14 +31,14 @@
             };
         }
 
-        public override void Menu()
+        public override void Menu(Services service, User user)
         {
             Console.WriteLine("1. View Books\n2. Search Book\n3. Place Order\n4. Borrow Book\n5. Calculate Fine\n" +
                 "6. Return Book\n7. Exit");
 
             int choice = Convert.ToInt32(Console.ReadLine());
 
-            Operations[choice - 1].Oper();
+            Operations[choice - 1].Oper(service, user);
         }
     }
 }

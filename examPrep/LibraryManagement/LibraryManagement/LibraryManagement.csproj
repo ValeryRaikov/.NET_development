@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Books\" />
+    <Folder Include="Data\Users\" />
+  </ItemGroup>
+
 </Project>

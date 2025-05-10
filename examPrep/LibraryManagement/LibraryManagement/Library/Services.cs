@@ -2,8 +2,35 @@
 {
     public class Services
     {
-        List<User> users = new List<User>();
-        List<string> usernames = new List<string>();
+        private List<User> users = new List<User>();
+        private List<string> usernames = new List<string>();
+        private List<Book> books = new List<Book>();
+        private List<string> bookTitles = new List<string>();
+
+        private readonly string baseDataPath = Path.Combine(AppContext.BaseDirectory, "Data");
+        private readonly DirectoryInfo usersDir;
+        private readonly DirectoryInfo booksDir;
+
+        public Services()
+        {
+            usersDir = new DirectoryInfo(Path.Combine(baseDataPath, "Users"));
+            booksDir = new DirectoryInfo(Path.Combine(baseDataPath, "Books"));
+
+            if (!Directory.Exists(baseDataPath))
+            {
+                Directory.CreateDirectory(baseDataPath);
+            }
+
+            if (!usersDir.Exists)
+            {
+                usersDir.Create();
+            }
+
+            if (!booksDir.Exists)
+            {
+                booksDir.Create();
+            }
+        }
 
         public void AddUser(User u)
         {
@@ -29,6 +56,12 @@
         public User getUser(int found)
         {
             return users[found];
+        }
+
+        public void AddBook(Book book)
+        {
+            books.Add(book);
+            bookTitles.Add(book.Title);
         }
     }
 }

@@ -45,6 +45,6 @@
             PhoneNumber = phoneNumber;
         }
 
-        abstract public void Menu();
+        abstract public void Menu(Services service, User user);
     }
 }

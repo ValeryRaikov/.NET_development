@@ -46,7 +46,7 @@ namespace LibraryManagement
             {
                 User user = service.getUser(found);
                 Console.WriteLine($"Welcome, {user.Name}");
-                user.Menu();
+                user.Menu(service, user);
             }
             else
             {
@@ -81,7 +81,7 @@ namespace LibraryManagement
 
             Console.WriteLine("User created successfully!");
 
-            user.Menu();
+            user.Menu(service, user);
         }
     }
 }

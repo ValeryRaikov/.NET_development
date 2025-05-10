@@ -2,6 +2,6 @@
 {
     public interface IOOperation
     {
-        public void Oper();
+        public void Oper(Services service, User user);
     }
 }

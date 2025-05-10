@@ -2,7 +2,7 @@
 {
     public class DeleteAllData : IOOperation
     {
-        public void Oper()
+        public void Oper(Services service, User user)
         {
             throw new NotImplementedException();
         }

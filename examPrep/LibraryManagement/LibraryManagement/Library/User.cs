@@ -46,5 +46,7 @@
         }
 
         abstract public void Menu(Services service, User user);
+
+        abstract public override string ToString();
     }
 }

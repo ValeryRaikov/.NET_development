@@ -40,5 +40,10 @@
 
             Operations[choice - 1].Oper(service, user);
         }
+
+        public override string ToString()
+        {
+            return $"{Name} - {Email} - {PhoneNumber} -> Normal User\n";
+        }
     }
 }

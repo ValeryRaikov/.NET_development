@@ -1,4 +1,6 @@
-﻿namespace LibraryManagement.Library
+﻿using System.Text.Json;
+
+namespace LibraryManagement.Library
 {
     public class Services
     {
@@ -62,6 +64,48 @@
         {
             books.Add(book);
             bookTitles.Add(book.Title);
+        }
+
+        public void LoadUsersFromFile()
+        {
+            try
+            {
+                string filePath = Path.Combine(usersDir.FullName, "users.json");
+
+                if (File.Exists(filePath))
+                {
+                    string json = File.ReadAllText(filePath);
+                    List<User>? loadedUsers = JsonSerializer.Deserialize<List<User>>(json);
+
+                    if (loadedUsers != null)
+                    {
+                        users = loadedUsers;
+                        usernames = loadedUsers.Select(u => u.ToString()).ToList();
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void SaveUsersToFile()
+        {
+            try
+            {
+                string filePath = Path.Combine(usersDir.FullName, "users.json");
+
+                string json = JsonSerializer.Serialize(users, new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+
+                File.WriteAllText(filePath, json);
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

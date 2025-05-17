@@ -44,6 +44,71 @@ namespace LINQ
 
             Console.WriteLine("\nUniversity Students only:");
             PersonService.DisplayPeople(PersonService.UniversityStudents.Cast<BasePerson>().ToList());
+
+            Console.WriteLine("---------------------------");
+            // More LINQ SQL Syntax Examples:
+            var names = new List<string>
+            {
+                "Ivan", "Stamat", "Valery", "Maria", "Petra", "Georgi", "Vasilena", "Magdalena", "Ivaylo", "Vasil", "Mihail",
+                "Grigor", "Gerasim", "Viktoriq",
+            };
+
+            var namesWithM = (
+                from n in names
+                where n.StartsWith("M")
+                orderby n
+                select n
+            ).ToList();
+
+            foreach (var name in namesWithM)
+            {
+                Console.Write($"{name}, ");
+            }
+
+            Console.WriteLine();
+
+            var namesWithLength6 = (
+                from n in names
+                where n.Length == 6
+                select n
+            ).ToList();
+
+            foreach (var name in namesWithLength6)
+            {
+                Console.Write($"{name}, ");
+            }
+
+            Console.WriteLine();
+
+            var firstNameWithV = (
+                from n in names
+                where n.StartsWith("V")
+                select n
+            ).FirstOrDefault();
+
+            Console.WriteLine(firstNameWithV);
+
+            var check1 = (
+                from n in names
+                where n.Length > 5
+                select n
+            ).Any();
+
+            Console.WriteLine(check1);
+
+            var check2 = names.All(n => n.Length > 3);
+            Console.WriteLine(check2);
+
+            var check3 = names.All(n => n.Length > 5);
+            Console.WriteLine(check3);
+
+            var final = (
+                from n in names
+                where n.Contains("e")
+                select n
+            ).Count();
+
+            Console.WriteLine(final);
         }
     }
 }

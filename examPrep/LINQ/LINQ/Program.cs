@@ -20,17 +20,30 @@ namespace LINQ
             PersonService.AddStudent(people, uniStudent1);
             PersonService.AddStudent(people, uniStudent2);
 
+            Console.WriteLine("\nAttempting to add duplicate...");
             PersonService.AddStudent(people, new Student("John", "Doe", 20, "1234567890", "18 SOU", 12));
+
+            Console.WriteLine("\nCurrent people list:");
             PersonService.DisplayPeople(people);
 
             Console.WriteLine("\nUpdating Alice Johnson to Alice Williams...");
             var updatedStudent = new Student("Alice", "Williams", 21, "1122334455", "32 SOU", 7);
             PersonService.UpdateStudent(people, student2, updatedStudent);
+
+            Console.WriteLine("\nUpdated list (query syntax):");
             PersonService.DisplayPeopleQuery(people);
 
             Console.WriteLine("\nRemoving Jane Smith...");
             PersonService.RemoveStudent(people, uniStudent1);
+
+            Console.WriteLine("\nFinal people list:");
             PersonService.DisplayPeople(people);
+
+            Console.WriteLine("\nStudents only:");
+            PersonService.DisplayPeople(PersonService.Students.Cast<BasePerson>().ToList());
+
+            Console.WriteLine("\nUniversity Students only:");
+            PersonService.DisplayPeople(PersonService.UniversityStudents.Cast<BasePerson>().ToList());
         }
     }
 }

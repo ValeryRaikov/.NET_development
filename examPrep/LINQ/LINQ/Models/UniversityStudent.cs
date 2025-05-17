@@ -12,7 +12,7 @@
             get => _universityName;
             set
             {
-                if (_universityName != null && _universityName.Length > 0 && _universityName.Length < 100)
+                if (value != null && value.Length > 0 && value.Length < 100)
                 {
                     _universityName = value;
                 }
@@ -24,7 +24,7 @@
             get => _specialtyName;
             set
             {
-                if (_specialtyName != null && _specialtyName.Length > 0 && _specialtyName.Length < 100)
+                if (value != null && value.Length > 0 && value.Length < 100)
                 {
                     _specialtyName = value;
                 }
@@ -36,7 +36,7 @@
             get => _facultyNumber;
             set
             {
-                if (_facultyNumber.Length == 9)
+                if (value.Length == 9)
                 {
                     _facultyNumber = value;
                 }
@@ -48,7 +48,7 @@
             get => _year;
             set
             {
-                if (_year > 0 && _year < 7)
+                if (value > 0 && value < 7)
                 {
                     _year = value;
                 } 
@@ -66,7 +66,7 @@
 
         public override string ToString()
         {
-            return $"University Student: {FirstName} {LastName} from Univeristy: {UniversityName} with specialization of {SpecialtyName}";
+            return $"{base.ToString()} | University: {UniversityName} (Year {Year}) | Faculty #: {FacultyNumber}";
         }
     }
 }

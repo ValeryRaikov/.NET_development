@@ -10,7 +10,7 @@
             get => _schoolName;
             set
             {
-                if (_schoolName != null &&  _schoolName.Length > 0 && _schoolName.Length < 100)
+                if (value != null &&  value.Length > 0 && value.Length < 100)
                 {
                     _schoolName = value;
                 }
@@ -22,7 +22,7 @@
             get => _grade;
             set
             {
-                if (_grade > 0 && _grade < 13)
+                if (value > 0 && value < 13)
                 {
                     _grade = value;
                 }
@@ -38,7 +38,7 @@
 
         public override string ToString()
         {
-            return $"Student: {FirstName} {LastName} from school {SchoolName}";
+            return $"{base.ToString()} | Student at {SchoolName} (Grade {Grade}) | PIN: {Pin}";
         }
     }
 }

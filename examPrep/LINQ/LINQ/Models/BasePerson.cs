@@ -12,7 +12,7 @@
             get => _firstName;
             set
             {
-                if (_firstName != null && _firstName.Length > 2 && _firstName.Length < 50)
+                if (value != null && value.Length > 2 && value.Length < 50)
                 {
                     _firstName = value;
                 }
@@ -24,7 +24,7 @@
             get => _lastName;
             set
             {
-                if (_lastName != null && _lastName.Length > 2 && _lastName.Length < 50)
+                if (value != null && value.Length > 2 && value.Length < 50)
                 {
                     _lastName = value;
                 }
@@ -36,7 +36,7 @@
             get => _age;
             set
             {
-                if (_age > 0 && _age < 110)
+                if (value > 0 && value < 110)
                 {
                     _age = value;
                 }
@@ -48,7 +48,7 @@
             get => _pin;
             set
             {
-                if (_pin.Length == 10)
+                if (value.Length == 10)
                 {
                     _pin = value;
                 }

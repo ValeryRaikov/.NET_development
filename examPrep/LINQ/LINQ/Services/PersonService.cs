@@ -4,143 +4,142 @@ namespace LINQ.Services
 {
     public static class PersonService
     {
-        public static List<Student> students = new List<Student>();
-        public static List<UniversityStudent> universityStudents = new List<UniversityStudent>();
+        public static List<Student> Students { get; } = new List<Student>();
+        public static List<UniversityStudent> UniversityStudents { get; } = new List<UniversityStudent>();
 
         public static void DisplayPeople(List<BasePerson> people)
         {
-            people.OrderBy(p => p.FirstName)
-                  .ThenBy(p => p.LastName)
-                  .ToList()
-                  .ForEach(p => Console.WriteLine(p));
+            if (people == null || !people.Any())
+            {
+                Console.WriteLine("No people to display.");
+                return;
+            }
 
-            Console.WriteLine($"\nTotal people: {people.Count}\n");
+            Console.WriteLine("\nPeople List (Method Syntax):");
+            Console.WriteLine("---------------------------");
+
+            people.OrderBy(p => p.FirstName)
+                .ThenBy(p => p.LastName)
+                .ToList()
+                .ForEach(Console.WriteLine);
+
+            Console.WriteLine($"\nTotal people: {people.Count}");
         }
 
         public static void DisplayPeopleQuery(List<BasePerson> people)
         {
-            var orderedPeople = 
-                from p in people
-                orderby p.LastName, p.FirstName
-                select p;
+            if (people == null || !people.Any())
+            {
+                Console.WriteLine("No people to display.");
+                return;
+            }
+
+            Console.WriteLine("\nPeople List (Query Syntax):");
+            Console.WriteLine("--------------------------");
+
+            var orderedPeople = from p in people
+                                orderby p.LastName, p.FirstName
+                                select p;
 
             foreach (var person in orderedPeople)
+            {
                 Console.WriteLine(person);
-        
-            Console.WriteLine($"\nTotal people: {people.Count}\n");
+            }
+
+            Console.WriteLine($"\nTotal people: {people.Count}");
         }
 
-        public static void AddStudent(List<BasePerson> people, BasePerson p)
+        public static void AddStudent(List<BasePerson> people, BasePerson person)
         {
-            if (!people.Any(person => person.Pin == p.Pin))
-            {
-                people.Add(p);
+            if (people == null) return;
 
-                if (p is Student)
-                    students.Add((Student)p);
-                else
-                    universityStudents.Add((UniversityStudent)p);
+            if (!people.Any(p => p.Pin == person.Pin))
+            {
+                people.Add(person);
+                AddToSpecializedList(person);
+                Console.WriteLine($"Added: {person}");
+            }
+            else
+            {
+                Console.WriteLine($"Duplicate PIN {person.Pin} - not added");
             }
         }
 
-        public static void AddStudentQuery(List<BasePerson> people, BasePerson p)
+        private static void AddToSpecializedList(BasePerson person)
         {
-            var exists = (
-                from person in people
-                where person.Pin == p.Pin
-                select person
-            ).Any();
-
-            if (!exists)
+            switch (person)
             {
-                people.Add(p);
-
-                if (p is Student)
-                    students.Add((Student)p);
-                else
-                    universityStudents.Add((UniversityStudent)p);
+                case UniversityStudent uniStudent:
+                    UniversityStudents.Add(uniStudent);
+                    break;
+                case Student student:
+                    Students.Add(student);
+                    break;
             }
         }
 
-        public static void RemoveStudent(List<BasePerson> people, BasePerson p)
+        public static void RemoveStudent(List<BasePerson> people, BasePerson person)
         {
-            var personToRemove = people.FirstOrDefault(person => person.Pin == p.Pin);
+            if (people == null) return;
 
-            if (personToRemove != null)
+            var personToRemove = people.FirstOrDefault(p => p.Pin == person.Pin);
+            if (personToRemove == null)
             {
-                people.Remove(personToRemove);
+                Console.WriteLine($"Person with PIN {person.Pin} not found");
+                return;
+            }
 
-                if (p is Student)
-                    students.Remove((Student)p);
-                else
-                    universityStudents.Remove((UniversityStudent)p);
+            people.Remove(personToRemove);
+            RemoveFromSpecializedList(personToRemove);
+            Console.WriteLine($"Removed: {personToRemove}");
+        }
+
+        private static void RemoveFromSpecializedList(BasePerson person)
+        {
+            switch (person)
+            {
+                case UniversityStudent uniStudent:
+                    UniversityStudents.Remove(uniStudent);
+                    break;
+                case Student student:
+                    Students.Remove(student);
+                    break;
             }
         }
 
-        public static void UpdateStudent(List<BasePerson> people, BasePerson p1, BasePerson p2)
+        public static void UpdateStudent(List<BasePerson> people, BasePerson oldPerson, BasePerson newPerson)
         {
-            int index = people.FindIndex(p => p.Pin == p1.Pin);
-
-            if (index != -1)
+            if (people == null) return;
+            if (oldPerson.Pin != newPerson.Pin)
             {
-                people[index] = p2;
-
-                if (p1 is Student && p2 is Student)
-                {
-                    int index2 = students.FindIndex(p => p.Pin == p1.Pin);
-
-                    if (index2 != -1)
-                    {
-                        students[index2] = (Student)p2;
-                    }
-                }
-                else
-                {
-                    int index2 = universityStudents.FindIndex(p => p.Pin == p1.Pin);
-
-                    if (index2 != -1)
-                    {
-                        universityStudents[index2] = (UniversityStudent)p2;
-                    }
-                }
+                Console.WriteLine("Error: Cannot change PIN during update");
+                return;
             }
+
+            int index = people.FindIndex(p => p.Pin == oldPerson.Pin);
+            if (index == -1)
+            {
+                Console.WriteLine($"Person with PIN {oldPerson.Pin} not found");
+                return;
+            }
+
+            people[index] = newPerson;
+            UpdateSpecializedList(oldPerson, newPerson);
+            Console.WriteLine($"Updated: {oldPerson} to {newPerson}");
         }
 
-        public static void UpdateStudentQuery(List<BasePerson> people, BasePerson p1, BasePerson p2)
+        private static void UpdateSpecializedList(BasePerson oldPerson, BasePerson newPerson)
         {
-            var existingPerson = (
-                from person in people
-                where person.Pin == p1.Pin
-                select person
-            ).FirstOrDefault();
-
-            if (existingPerson != null)
+            switch (oldPerson)
             {
-                int index = people.IndexOf(existingPerson);
-
-                if (index != -1)
-                {
-                    people[index] = p2;
-
-                    if (p1 is Student && p2 is Student)
-                    {
-                        int index2 = students.FindIndex(p => p.Pin == p1.Pin);
-
-                        if (index2 != -1)
-                        {
-                            students[index2] = (Student)p2;
-                        }
-                    }
-                    else
-                    {
-                        int index2 = universityStudents.FindIndex(p => p.Pin == p1.Pin);
-
-                        if (index2 != -1)
-                        {
-                            universityStudents[index2] = (UniversityStudent)p2;
-                        }
-                    }
-                }
+                case UniversityStudent oldUni when newPerson is UniversityStudent newUni:
+                    var uniIndex = UniversityStudents.FindIndex(s => s.Pin == oldUni.Pin);
+                    if (uniIndex != -1) UniversityStudents[uniIndex] = newUni;
+                    break;
+                case Student oldStd when newPerson is Student newStd:
+                    var stdIndex = Students.FindIndex(s => s.Pin == oldStd.Pin);
+                    if (stdIndex != -1) Students[stdIndex] = newStd;
+                    break;
             }
         }
     }

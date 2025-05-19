@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleExam1.MainPage"
+             xmlns:vm="clr-namespace:SampleExam1.ViewModels"
+             xmlns:model="clr-namespace:SampleExam1.Models"
+             x:DataType="vm:PersonViewModel"
+             Title="User Registration">
+
+    <ContentPage.BindingContext>
+        <vm:PersonViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Name" FontAttributes="Bold"/>
+            <Entry Placeholder="Enter Name" 
+                   Text="{Binding NewPerson.Name, Mode=TwoWay}"/>
+
+            <Label Text="Age" FontAttributes="Bold"/>
+            <Entry Placeholder="Enter Age" 
+                   Text="{Binding NewPerson.Age, Mode=TwoWay}"
+                   Keyboard="Numeric"/>
+
+            <Label Text="City" FontAttributes="Bold"/>
+            <Picker Title="Select City"
+                    ItemsSource="{Binding Source={x:Static model:City.AllCities}}"
+                    SelectedItem="{Binding NewPerson.City, Mode=TwoWay}">
+                <Picker.ItemDisplayBinding>
+                    <Binding Path="."/>
+                </Picker.ItemDisplayBinding>
+            </Picker>
+
+            <Label Text="Gender" FontAttributes="Bold"/>
+            <VerticalStackLayout>
+                <RadioButton Content="Male" 
+                            IsChecked="{Binding NewPerson.Gender, 
+                                    Converter={StaticResource EnumToBoolConverter}, 
+                                    ConverterParameter={x:Static model:Gender.Male}, 
+                                    Mode=TwoWay}"/>
+                <RadioButton Content="Female" 
+                            IsChecked="{Binding NewPerson.Gender, 
+                                    Converter={StaticResource EnumToBoolConverter}, 
+                                    ConverterParameter={x:Static model:Gender.Female}, 
+                                    Mode=TwoWay}"/>
+            </VerticalStackLayout>
+
+            <Button Text="Submit" 
+                    Command="{Binding SubmitCommand}"
+                    Margin="0,20,0,0"
+                    BackgroundColor="#512BD4"
+                    TextColor="White"
+                    HeightRequest="50"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

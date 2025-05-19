@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiMVVM2.MainPage"
+             xmlns:vm="clr-namespace:MauiMVVM2.ViewModels"
+             xmlns:model="clr-namespace:MauiMVVM2.Models"
+             x:DataType="vm:UserViewModel"
+             Title="User Profile">
+
+    <StackLayout Padding="10" Spacing="10">
+        <Entry Placeholder="Enter your name..." Text="{Binding Username, Mode=TwoWay}" />
+
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Add" 
+                    Command="{Binding AddCommand}" />
+            <Button Text="Update" 
+                    Command="{Binding UpdateCommand}"
+                    IsEnabled="{Binding IsUserSelected}" />
+            <Button Text="Delete" 
+                    Command="{Binding DeleteCommand}"
+                    IsEnabled="{Binding IsUserSelected}" />
+            <Button Text="Clear All" 
+                    Command="{Binding ClearAllCommand}" />
+        </HorizontalStackLayout>
+
+        <Grid Margin="0,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Username" FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
+            <Label Text="Email" FontAttributes="Bold" Grid.Row="0" Grid.Column="1"/>
+            
+            <CollectionView ItemsSource="{Binding Users}" 
+                            SelectedItem="{Binding SelectedUser, Mode=TwoWay}"
+                            SelectionMode="Single"
+                            Grid.Row="1" Grid.ColumnSpan="2">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:User">
+                        <Grid Padding="0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Name}" Grid.Column="0"/>
+                            <Label Text="{Binding Email}" Grid.Column="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

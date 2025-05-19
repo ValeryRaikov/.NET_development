@@ -55,6 +55,9 @@ namespace MauiMVVM2.ViewModels
         public ICommand DeleteCommand { get; }
         public ICommand ClearAllCommand { get; }
 
+        public ICommand NavigateToProductsCommand = 
+            new Command(async () => await Shell.Current.GoToAsync("//ProductsPage"));
+
         public UserViewModel(Page page)
         {
             _page = page;

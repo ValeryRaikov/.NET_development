@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiMVVM2.MainPage"
+             x:Class="MauiMVVM2.Views.UserPage"
              xmlns:vm="clr-namespace:MauiMVVM2.ViewModels"
              xmlns:model="clr-namespace:MauiMVVM2.Models"
              x:DataType="vm:UserViewModel"
-             Title="User Profile">
+             Title="User Management">
 
     <StackLayout Padding="10" Spacing="10">
         <Entry Placeholder="Enter your name..." Text="{Binding Username, Mode=TwoWay}" />
@@ -21,6 +21,8 @@
                     IsEnabled="{Binding IsUserSelected}" />
             <Button Text="Clear All" 
                     Command="{Binding ClearAllCommand}" />
+            <Button Text="Go to Products"
+                    Command="{Binding NavigateToProductsCommand}" />
         </HorizontalStackLayout>
 
         <Grid Margin="0,20,0,0">

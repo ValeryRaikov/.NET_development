@@ -1,10 +1,10 @@
 ﻿using MauiMVVM2.ViewModels;
 
-namespace MauiMVVM2
+namespace MauiMVVM2.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class UserPage : ContentPage
     {
-        public MainPage()
+        public UserPage()
         {
             InitializeComponent();
 

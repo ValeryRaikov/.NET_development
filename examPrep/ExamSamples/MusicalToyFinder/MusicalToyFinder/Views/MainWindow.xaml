@@ -1,0 +1,21 @@
+﻿<Window x:Class="MusicalToyFinder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicalToyFinder"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <StackPanel Margin="10">
+        <TextBlock Text="Музикални играчки" FontWeight="Bold" FontSize="16"/>
+
+        <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+        <Button Content="Следваща" Command="{Binding GetNextCommand}" Width="100"/>
+
+        <TextBlock Text="{Binding MToy.Caption}" FontWeight="SemiBold"/>
+        <TextBlock Text="{Binding MToy.Manufacturer}"/>
+        <TextBlock Text="{Binding MToy.AgeInMonths}"/>
+    </StackPanel>
+    
+</Window>

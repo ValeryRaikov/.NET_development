@@ -65,19 +65,7 @@ namespace FootballApp.ViewModels
             }
         }
 
-        public ICommand StoreCommand { get; }
-        public ICommand ShowMatchesCommand { get; }
-
-        public MainWindowVM()
-        {
-            Match = new Match
-            {
-                Start = DateTime.Now,
-            };
-
-            StoreCommand = new StoreResult(this);
-            ShowMatchesCommand = new ShowMatches();
-        }
+        public int? MatchId { get; set; }
 
         public string Winner
         {
@@ -90,6 +78,20 @@ namespace FootballApp.ViewModels
                 else
                     return "Draw";
             }
+        }
+
+        public ICommand StoreCommand { get; }
+        public ICommand ShowMatchesCommand { get; }
+
+        public MainWindowVM()
+        {
+            Match = new Match
+            {
+                Start = DateTime.Now,
+            };
+
+            StoreCommand = new StoreResult(this);
+            ShowMatchesCommand = new ShowMatches();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

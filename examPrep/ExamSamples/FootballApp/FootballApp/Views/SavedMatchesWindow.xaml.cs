@@ -1,4 +1,5 @@
 ﻿using FootballApp.Context;
+using FootballApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,19 +24,7 @@ namespace FootballApp.Views
         public SavedMatchesWindow()
         {
             InitializeComponent();
-
-            try
-            {
-                using (var db = new MatchContext())
-                {
-                    var matches = db.Matches.ToList();
-                    MatchesGrid.ItemsSource = matches;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error while retreiving data:\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            DataContext = new SavedMatchesVM();
         }
     }
 }

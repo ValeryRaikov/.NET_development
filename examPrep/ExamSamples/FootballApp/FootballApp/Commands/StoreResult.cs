@@ -25,7 +25,7 @@ namespace FootballApp.Commands
 
             try
             {
-                using (var db = new MatchContext())
+                using (var db = new DatabaseContext())
                 {
                     db.Database.EnsureCreated();
 

@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FootballApp.Context
 {
-    public class MatchContext : DbContext
+    public class DatabaseContext : DbContext
     {
         public DbSet<Match> Matches { get; set; }
 
-        public MatchContext()
+        public DbSet<User> Users { get; set; }
+
+        public DatabaseContext()
         {
             Database.EnsureCreated();
         }

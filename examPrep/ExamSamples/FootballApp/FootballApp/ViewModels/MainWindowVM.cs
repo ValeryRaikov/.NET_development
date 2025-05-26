@@ -8,11 +8,6 @@ namespace FootballApp.ViewModels
     public class MainWindowVM : INotifyPropertyChanged
     {
         private Match _match;
-        private string _homeTeam;
-        private string _foreignTeam;
-        private DateTime _start;
-        private int _scoreHome;
-        private int _scoreForeign;
 
         public Match Match
         {
@@ -26,46 +21,46 @@ namespace FootballApp.ViewModels
 
         public string HomeTeam
         {
-            get => _homeTeam;
+            get => Match.HomeTeam;
             set
             {
-                _homeTeam = value;
+                Match.HomeTeam = value;
                 OnPropertyChanged(nameof(HomeTeam));
             }
         }
         public string ForeignTeam
         {
-            get => _foreignTeam;
+            get => Match.ForeignTeam;
             set
             {
-                _foreignTeam = value;
+                Match.ForeignTeam = value;
                 OnPropertyChanged(nameof(ForeignTeam));
             }
         }
         public DateTime Start
         {
-            get => _start;
+            get => Match.Start;
             set
             {
-                _start = value;
+                Match.Start = value;
                 OnPropertyChanged(nameof(Start));
             }
         }
         public int ScoreHome
         {
-            get => _scoreHome;
+            get => Match.ScoreHome;
             set
             {
-                _scoreHome = value;
+                Match.ScoreHome = value;
                 OnPropertyChanged(nameof(ScoreHome));
             }
         }
         public int ScoreForeign
         {
-            get => _scoreForeign;
+            get => Match.ScoreForeign;
             set
             {
-                _scoreForeign = value;
+                Match.ScoreForeign = value;
                 OnPropertyChanged(nameof(ScoreForeign));
             }
         }
